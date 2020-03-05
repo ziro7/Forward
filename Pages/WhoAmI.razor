@@ -1,0 +1,42 @@
+﻿@page "/WhoAmI"
+@inherits WhoAmIBase
+
+<h1 class="page-title">Who Am I</h1>
+
+@*@if (WorkExperience == null) {
+        <p><em>Loading...</em></p>
+    } else {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < WorkExperience.Count; i++) {
+                    @if (i % 2 == 1) {
+                        <tr>
+                            <td><b>@WorkExperience[i].CompanyName</b></td>
+                            <td><p><u> @WorkExperience[i].Titel - From: @WorkExperience[i].StartDate.ToShortDateString() to: @WorkExperience[i].EndDate.ToShortDateString()</u><br />
+                                @WorkExperience[i].WorkDescription
+                            </p></td>
+                        </tr>
+                    } else {
+                        <tr>
+                            <td><p><u>@WorkExperience[i].Titel - From: @WorkExperience[i].StartDate.ToShortDateString() to: @WorkExperience[i].EndDate.ToShortDateString()</u><br />
+                                @WorkExperience[i].WorkDescription
+                            </p></td>
+                            <td><b>@WorkExperience[i].CompanyName</b></td>
+                        </tr>
+                        }
+                    }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>bottom left</td>
+                    <td>Bottom right</td>
+                </tr>
+            </tfoot>
+        </table>
+    }*@
+

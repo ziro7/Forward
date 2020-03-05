@@ -1,0 +1,25 @@
+﻿@page "/"
+@namespace Forward.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forward</title>
+    <base href="~/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="css/site.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/273d0585ea.js" crossorigin="anonymous"></script>
+    <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=ubuntu&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <app>
+        @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered)) @*Points to the main App.razor wile*@
+    </app>
+
+    <script src="_framework/blazor.server.js"></script>
+</body>
+</html>
