@@ -1,0 +1,10 @@
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\appsettings.Development.json
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\appsettings.json
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Properties\launchSettings.json
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\ForwardBackend.exe
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.csprojAssemblyReference.cache
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.AssemblyInfoInputs.cache
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.AssemblyInfo.cs
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.RazorTargetAssemblyInfo.cache
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\staticwebassets\ForwardBackend.StaticWebAssets.Manifest.cache
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\staticwebassets\ForwardBackend.StaticWebAssets.xml

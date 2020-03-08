@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ForwardBackend.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,14 +24,19 @@ namespace ForwardBackend
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+            // Registering the the models
+            services.AddTransient<IJobRepository, JobRepository>(); //When asking for IJobRepository a New JobRepository is returned.
+            services.AddMvc(); //maybe it should be mvcCore. Enabling the mvc services
             services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
-            if (env.IsDevelopment()) {
-                app.UseDeveloperExceptionPage();
-            }
+
+            // Middleware component
+            app.UseDeveloperExceptionPage(); // gets more information on crash - should not be in release tho
+            app.UseStatusCodePages(); // adds the status code 200 etc.
+            app.UseStaticFiles(); // Enables static files (search in www. files) - might not be needed in api
 
             app.UseHttpsRedirection();
 
