@@ -7,12 +7,20 @@ namespace ForwardBackend.Models
 {
     public class JobRepository : IJobRepository
     {
-        public IEnumerable<Job> GetAllJobs() {
-            throw new NotImplementedException();
+        private readonly AppDbContext _appDbContext;
+
+        public JobRepository(AppDbContext appDbContext) {
+            _appDbContext = appDbContext;
         }
 
-        public Job GetJobById(int workId) {
-            throw new NotImplementedException();
+        public IEnumerable<Job> GetAllJobs() {
+            // Returns all pies as there is no criteria on 
+            return _appDbContext.Jobs;
+        }
+
+        public Job GetJobById(int jobId) {
+            // Only return first job that have the supplied Id.
+            return _appDbContext.Jobs.FirstOrDefault(j => j.JobId == jobId);
         }
     }
 }

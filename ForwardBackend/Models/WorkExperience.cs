@@ -7,7 +7,7 @@ namespace ForwardBackend.Models
 {
     public class WorkExperience
     {
-        public int WorkId { get; set; }
+        public int Id { get; set; }
         public string Titel { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime EndDate { get; set; }
