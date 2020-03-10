@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Forward.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -23,7 +24,14 @@ namespace Forward
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services) {
+            // Add support for Razor pages
             services.AddRazorPages();
+
+            // Use the IHttpClient factory to register JobService and to use the uri when called.
+            services.AddHttpClient<IJobService, JobService>(client => {
+                client.BaseAddress = new Uri("https://localhost:5001/");
+                //client.BaseAddress = new Uri("https://localhost:44378/");
+            });
             services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; }); //Added the option for detailed info delivered to the browser.
             // This is the place to add HTTP client services or other services needed.
         }

@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Core;
 
 namespace Forward.Services
 {
-    public class JobService : IJobsService
+    public class JobService : IJobService
     {
         public readonly HttpClient _httpClient;
 
-        public JobService() {
-
+        public JobService(HttpClient httpClient) {
+            _httpClient = httpClient;
         }
         public Task<Job> AddJob(Job job) {
             throw new NotImplementedException();
@@ -22,12 +23,14 @@ namespace Forward.Services
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Job>> GetAllJobs() {
-            throw new NotImplementedException();
+        public async Task<IEnumerable<Job>> GetAllJobs() {
+            return await JsonSerializer.DeserializeAsync<IEnumerable<Job>>
+                (await _httpClient.GetStreamAsync($"api/jobs"), new JsonSerializerOptions());
         }
 
-        public Task<Job> GetJob(int jobId) {
-            throw new NotImplementedException();
+        public async Task<Job> GetJob(int jobId) {
+            return await JsonSerializer.DeserializeAsync<Job>
+                (await _httpClient.GetStreamAsync($"api/jobs/{jobId}"), new JsonSerializerOptions());
         }
 
         public Task UpdateJob(Job job) {

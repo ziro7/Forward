@@ -6,7 +6,7 @@ using Core;
 
 namespace Forward.Services
 {
-    public interface IJobsService
+    public interface IJobService
     {
         Task<IEnumerable<Job>> GetAllJobs();
         Task<Job> GetJob(int jobId);
