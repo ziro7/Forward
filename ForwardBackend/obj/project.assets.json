@@ -2731,6 +2731,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.0",
+        "compile": {
+          "bin/placeholder/Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Core.dll": {}
+        }
       }
     }
   },
@@ -9038,10 +9048,16 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "Core/1.0.0": {
+      "type": "project",
+      "path": "../Core/Core.csproj",
+      "msbuildProject": "../Core/Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
+      "Core >= 1.0.0",
       "Microsoft.CodeAnalysis.Analyzers >= 2.9.8",
       "Microsoft.CodeAnalysis.FxCopAnalyzers >= 2.9.8",
       "Microsoft.CodeQuality.Analyzers >= 2.9.8",
@@ -9083,7 +9099,11 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\JBKD\\source\\repos\\Forward\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\JBKD\\source\\repos\\Forward\\Core\\Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
