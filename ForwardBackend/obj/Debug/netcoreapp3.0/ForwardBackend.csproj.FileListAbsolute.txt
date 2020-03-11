@@ -138,7 +138,6 @@ C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\runtim
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Core.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Core.pdb
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.csprojAssemblyReference.cache
-C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.AssemblyInfoInputs.cache
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.AssemblyInfo.cs
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.RazorTargetAssemblyInfo.cache
@@ -147,3 +146,7 @@ C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\static
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\staticwebassets\ForwardBackend.StaticWebAssets.xml
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.pdb
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll

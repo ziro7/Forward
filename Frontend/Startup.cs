@@ -32,6 +32,10 @@ namespace Forward
                 client.BaseAddress = new Uri("https://localhost:5001/");
                 //client.BaseAddress = new Uri("https://localhost:44378/");
             });
+            services.AddHttpClient<IWorkExperienceService, WorkExperienceService>(client => {
+                client.BaseAddress = new Uri("https://localhost:5001/");
+                //client.BaseAddress = new Uri("https://localhost:44378/");
+            });
             services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; }); //Added the option for detailed info delivered to the browser.
             // This is the place to add HTTP client services or other services needed.
         }

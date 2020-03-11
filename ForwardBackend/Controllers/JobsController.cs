@@ -25,14 +25,18 @@ namespace ForwardBackend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Job>>> GetJobs()
         {
-            return await _context.Jobs.ToListAsync();
+            return await _context.Jobs.ToListAsync(); // the workexperience will be empty here as it is a collection.
         }
 
         // GET: api/Jobs/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Job>> GetJob(int id)
         {
-            var job = await _context.Jobs.FindAsync(id);
+            var job = await _context.Jobs
+                .Include(j => j.WorkExperiences)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(j => j.JobId == id)
+                .ConfigureAwait(true);
 
             if (job == null)
             {

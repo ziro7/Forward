@@ -16,6 +16,7 @@ namespace Forward.Pages
 
         // One of Blazors functions which will be called when the components is going to be initiallized. Stated on ComponenBase
         protected override async Task OnInitializedAsync() {
+
             Jobs = (await JobService.GetAllJobs()).ToList();
         }
     }

@@ -24,8 +24,17 @@ namespace Forward.Services
         }
 
         public async Task<IEnumerable<Job>> GetAllJobs() {
-            return await JsonSerializer.DeserializeAsync<IEnumerable<Job>>
+            //var jobsWithoutWorkExperience =
+             return await JsonSerializer.DeserializeAsync<IEnumerable<Job>>
                 (await _httpClient.GetStreamAsync($"api/jobs"), new JsonSerializerOptions());
+
+            //List<Job> allJobs = new List<Job>();
+
+            //foreach (var job in jobsWithoutWorkExperience) {
+            //    allJobs.Add(await GetJob(job.JobId));
+            //}
+
+            //return allJobs;
         }
 
         public async Task<Job> GetJob(int jobId) {

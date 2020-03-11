@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace ForwardBackend
 {
@@ -32,9 +33,11 @@ namespace ForwardBackend
 
             // Registering the the models
             services.AddTransient<IJobRepository, JobRepository>(); //When asking for IJobRepository a New JobRepository is returned.
-            services.AddScoped<IJobRepository,JobRepository>(); // Needed to create the Entity database model
-            
-            //services.AddMvc(); //maybe it should be mvcCore. Enabling the mvc services
+            services.AddScoped<IJobRepository, JobRepository>(); // Needed to create the Entity database model
+
+            services.AddMvc(option => option.EnableEndpointRouting = false)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

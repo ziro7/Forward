@@ -9,6 +9,6 @@ namespace ForwardBackend.Models
     public interface IJobRepository
     {
         IEnumerable<Job> GetAllJobs();
-        Job GetJobById(int workId);
+        Job GetJobById(int jobId);
     }
 }
