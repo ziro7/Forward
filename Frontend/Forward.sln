@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forward", "Forward.csproj",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForwardBackend", "..\ForwardBackend\ForwardBackend.csproj", "{DC119FB2-E1D8-4BBB-98EC-A36C2998BD99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "..\Core\Core.csproj", "{AE9ED3A0-2ADD-4CA4-B86B-2949EB792E65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "..\Core\Core.csproj", "{AE9ED3A0-2ADD-4CA4-B86B-2949EB792E65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

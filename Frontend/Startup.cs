@@ -24,6 +24,7 @@ namespace Forward
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services) {
+
             // Add support for Razor pages
             services.AddRazorPages();
 
@@ -31,6 +32,7 @@ namespace Forward
             services.AddHttpClient<IJobService, JobService>(client => {
                 client.BaseAddress = new Uri("https://localhost:5001/");
                 //client.BaseAddress = new Uri("https://localhost:44378/");
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json", 1.0));
             });
             services.AddHttpClient<IWorkExperienceService, WorkExperienceService>(client => {
                 client.BaseAddress = new Uri("https://localhost:5001/");

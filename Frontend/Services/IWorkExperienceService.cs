@@ -6,7 +6,7 @@ using Core;
 
 namespace Forward.Services
 {
-    interface IWorkExperienceService
+    public interface IWorkExperienceService
     {
         Task<IEnumerable<WorkExperience>> GetAllWorkExperiences();
         Task<WorkExperience> GetWorkExperience(int workexperienceId);

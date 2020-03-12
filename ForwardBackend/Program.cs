@@ -38,6 +38,9 @@ namespace ForwardBackend
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder => {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls(
+                        "http://localhost:5000", //also specified in launch settings - front end is 5002 and 5003
+                        "https://localhost:5001");
                 });
     }
 }

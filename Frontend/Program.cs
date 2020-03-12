@@ -22,6 +22,9 @@ namespace Forward
                 .ConfigureWebHostDefaults(webBuilder => {
                     // States which class should be used to handle startup.
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls(
+                        "http://localhost:5002", //also specified in launch settings - API is 5000 and 5001
+                        "https://localhost:5003");
                 });
     }
 }

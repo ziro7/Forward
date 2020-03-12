@@ -1,21 +1,58 @@
 ﻿@page "/WhoAmI"
 @inherits WhoAmIBase
+@using Microsoft.AspNetCore.Html
 
 <h1 class="page-title">Who Am I</h1>
 
-<img src="~/images/mig.jpg" alt="Me">
+<table>
+    <tbody>
+        <tr>
+            <td><img src="/images/mig.jpg" alt="Me"></td>
+            <td>
+                <ul>
+                    <li>Rolle:   Softwareudvikler</li>
+                    <li>Telefon: 24 86 23 86</li>
+                    <li>Mail:    Ziro776@gmail.com</li>
+                    <li>GitHub:	 https://github.com/ziro7</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-<p>
-    Rolle:	Softwareudvikler
-    Telefon:	24 86 23 86
-    Mail:	Ziro776@gmail.com
-    GitHub:	https://github.com/ziro7
 
-</p>
+<h1>Workexp Test</h1>
+@if (workExInFocus == null) {
+
+} else {
+    foreach (var item in workExInFocus) {
+        @item.Titel;
+    }
+}
+
+@if (workExAll== null) {
+
+} else {
+    @workExAll.Description;
+}
+
+<h1>Karriereforløb</h1>
+@if (JobInFocus == null) {
+
+} else {
+    <h2>@JobInFocus.CompanyName - Her burde CompanyName stå</h2>
+}
 
 
-<h2>Karriereforløb</h2>
 @if (Jobs == null) {
+    <p><em>Loading...</em></p>
+} else {
+    @foreach (var item in Jobs) {
+        <h1> Dette er fra jobs @item.CompanyName</h1>
+    }
+}
+
+@*@if (Jobs == null || Jobs[0].StartDate == DateTime.MinValue)  {
         <p><em>Loading...</em></p>
     } else {
         <table class="table">
@@ -54,15 +91,16 @@
                 </tr>
             </tfoot>
         </table>
-    }
+    }*@
 
-
-<h2>Uddannelse</h2>
+<br />
+<h1>Uddannelse</h1>
 <p>
-    2019	AU i IT, Smartlearning.dk (cphbusiness)
-    2007	Cand.Merc.Fin (Hovedopgave mangler), Handelshøjskolen i Århus
-    2004	HA in Economics and business administration, Handelshøjskolen i Århus
-    2001	HHX, Handelsskolen i Randers.
-
+    <ul>
+        <li>2019	AU i IT, Smartlearning.dk (cphbusiness)</li>
+        <li>2007	Cand.Merc.Fin (Hovedopgave mangler), Handelshøjskolen i Århus</li>
+        <li>2004	HA in Economics and business administration, Handelshøjskolen i Århus</li>
+        <li>2001	HHX, Handelsskolen i Randers.</li>
+    </ul>
 </p>
 
