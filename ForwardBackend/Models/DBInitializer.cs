@@ -35,7 +35,7 @@ namespace ForwardBackend.Models
                     };
                     var workExperience3 = new WorkExperience {
                         Titel = "Test Manager",
-                        Description = "Koordinering af test på Digital Transformation, herunder webservices, web og grænsesystemer til kernesystemet Polaris.</b>	Koordinering og planlægning af User accept test, </b>Koordinering af defektprocessen samt defektmanager, </b>Rapportering af testafvikling, </b>udarbejdelse af testplan samt testrapport, </b>anvendelse af TFS.",
+                        Description = "Koordinering af test på Digital Transformation, herunder webservices, web og grænsesystemer til kernesystemet Polaris.	Koordinering og planlægning af User accept test, Koordinering af defektprocessen samt defektmanager, Rapportering af testafvikling, udarbejdelse af testplan samt testrapport, anvendelse af TFS.",
                         FromDate = new DateTime(2018, 12, 01),
                         EndDate = new DateTime(2020, 12, 01),
                         JobForeignKey = job2.JobId

@@ -8,7 +8,7 @@
     <tbody>
         <tr>
             <td><img src="/images/mig.jpg" alt="Me"></td>
-            <td>
+            <td colspan="2">
                 <ul>
                     <li>Rolle:   Softwareudvikler</li>
                     <li>Telefon: 24 86 23 86</li>
@@ -20,81 +20,49 @@
     </tbody>
 </table>
 
-
-<h1>Workexp Test</h1>
-@if (workExInFocus == null) {
-
-} else {
-    foreach (var item in workExInFocus) {
-        @item.Titel;
-    }
-}
-
-@if (workExAll== null) {
-
-} else {
-    @workExAll.Description;
-}
-
-<h1>Karriereforløb</h1>
-@if (JobInFocus == null) {
-
-} else {
-    <h2>@JobInFocus.CompanyName - Her burde CompanyName stå</h2>
-}
-
-
-@if (Jobs == null) {
-    <p><em>Loading...</em></p>
-} else {
-    @foreach (var item in Jobs) {
-        <h1> Dette er fra jobs @item.CompanyName</h1>
-    }
-}
-
-@*@if (Jobs == null || Jobs[0].StartDate == DateTime.MinValue)  {
+<h2>Karriereforløb</h2>
+@if (Jobs == null || Jobs[0].StartDate == DateTime.MinValue)  {
         <p><em>Loading...</em></p>
     } else {
         <table class="table">
             <thead>
                 <tr>
-                    <th colspan="2"></th>
+                    <th colspan="3"></th>
                 </tr>
             </thead>
             <tbody>
                 @for (int i = 0; i < Jobs.Count(); i++) {
                     @if (i % 2 == 1) {
                         <tr>
-                            <td><b>@Jobs[i].CompanyName - @Jobs[i].StartDate.ToShortDateString() - @Jobs[i].EndDate.ToShortDateString()</b></td>
-                            @foreach (var item in Jobs[i].WorkExperiences) {
-                                <td><p><u> @item.Titel - From: @item.FromDate.ToShortDateString() to: @item.EndDate.ToShortDateString()</u><br />
-                                @item.Description
-                            </p></td>
-                            }
+                            <td width="33%"><b>@Jobs[i].CompanyName <br /> @Jobs[i].StartDate.ToShortDateString() - @Jobs[i].EndDate.ToShortDateString()</b></td>
+                            <td colspan="2" width="67%">
+                                @foreach (var item in Jobs[i].WorkExperiences) {
+                                    <p>
+                                        <u> @item.Titel - From: @item.FromDate.ToShortDateString() to: @item.EndDate.ToShortDateString()</u><br />
+                                        @item.Description
+                                    <br></p>
+                                    }
+                            </td>
                         </tr>
                     } else {
-                        <tr>
-                            @foreach (var item in Jobs[i].WorkExperiences) {
-                                <td><p><u> @item.Titel - From: @item.FromDate.ToShortDateString() to: @item.EndDate.ToShortDateString()</u><br />
-                                @item.Description
-                            </p></td>
-                            }
-                            <td><b>@Jobs[i].CompanyName - @Jobs[i].StartDate.ToShortDateString() - @Jobs[i].EndDate.ToShortDateString()</b></td>
+                        <tr><td colspan="2" width="67%"> 
+                                @foreach (var item in Jobs[i].WorkExperiences) {
+                                    <p>
+                                        <u> @item.Titel - From: @item.FromDate.ToShortDateString() to: @item.EndDate.ToShortDateString()</u><br />
+                                        @item.Description
+                                        <br /></p>
+                                }
+                            </td>
+                            <td width="33%"><b>@Jobs[i].CompanyName <br />@Jobs[i].StartDate.ToShortDateString() - @Jobs[i].EndDate.ToShortDateString()</b></td>
                         </tr>
                         }
                     }
             </tbody>
-            <tfoot>
-                <tr>
-                    <td>bottom left</td>
-                    <td>Bottom right</td>
-                </tr>
-            </tfoot>
         </table>
-    }*@
+    }
 
 <br />
-<h1>Uddannelse</h1>
+<h2>Uddannelse</h2>
 <p>
     <ul>
         <li>2019	AU i IT, Smartlearning.dk (cphbusiness)</li>
