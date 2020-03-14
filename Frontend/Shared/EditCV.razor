@@ -1,0 +1,54 @@
+﻿@page "/EditCV"
+@inherits EditCVBase
+
+<h3>EditCV</h3>
+
+<EditForm Model="@job" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <p>
+        <label>
+            Identifier:
+            <InputText @bind-Value="job.CompanyName" />
+        </label>
+    </p>
+    <p>
+        <label>
+            From Date:
+            <InputDate @bind-Value="job.StartDate" />
+        </label>
+    </p>
+    <p>
+        <label>
+            End Date:
+            <InputDate @bind-Value="job.EndDate" />
+        </label>
+    </p>
+    <p>
+        <label>
+            WorkExperience - Titel:
+            <InputText @bind-Value="workExperience.Titel" />
+        </label>
+    </p>
+    <p>
+        <label>
+            WorkExperience - From Date:
+            <InputDate @bind-Value="workExperience.FromDate" />
+        </label>
+    </p>
+    <p>
+        <label>
+            WorkExperience - To Date:
+            <InputDate @bind-Value="workExperience.EndDate" />
+        </label>
+    </p>
+    <p>
+        <label>
+            WorkExperience - Description:
+            <InputDate @bind-Value="workExperience.Description" />
+        </label>
+    </p>
+
+    <button type="submit">Submit</button>
+</EditForm>

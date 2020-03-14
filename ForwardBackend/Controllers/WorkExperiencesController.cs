@@ -48,7 +48,7 @@ namespace ForwardBackend.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutWorkExperience(int id, WorkExperience workExperience)
         {
-            if (id != workExperience.Id)
+            if (id != 0 && workExperience != null && id != workExperience.Id)
             {
                 return BadRequest();
             }
@@ -80,10 +80,14 @@ namespace ForwardBackend.Controllers
         [HttpPost]
         public async Task<ActionResult<WorkExperience>> PostWorkExperience(WorkExperience workExperience)
         {
-            _context.WorkExperiences.Add(workExperience);
-            await _context.SaveChangesAsync();
+            if(workExperience != null) {
+                _context.WorkExperiences.Add(workExperience);
+                await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetWorkExperience", new { id = workExperience.Id }, workExperience);
+                return CreatedAtAction("GetWorkExperience", new { id = workExperience.Id }, workExperience);
+            }
+            return BadRequest();
+            ;
         }
 
         // DELETE: api/WorkExperiences/5

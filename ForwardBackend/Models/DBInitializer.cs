@@ -6,11 +6,11 @@ using Core;
 
 namespace ForwardBackend.Models
 {
-    public class DBInitializer
+    public static class DBInitializer
     {
         public static void Seed(AppDbContext context) {
 
-            if (!context.Jobs.Any()) {
+            if (context != null && !context.Jobs.Any()) {
 
                 var job1 = new Job { CompanyName = "SimCorp", StartDate = new DateTime(2018, 12, 01), EndDate = new DateTime(2020, 12, 01) };
                 var job2 = new Job { CompanyName = "Testhuset", StartDate = new DateTime(2017, 01, 01), EndDate = new DateTime(2018, 12, 01) };

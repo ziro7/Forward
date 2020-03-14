@@ -21,5 +21,14 @@ namespace Forward.Pages
         protected override async Task OnInitializedAsync() {
             Jobs = await JobService.GetAllJobs();
         }
+        public async Task Modify() {
+            // Todo
+        }
+        public async Task Delete() {
+            // Todo
+        }
+        public async Task New() {
+            // Todo
+        }
     }
 }

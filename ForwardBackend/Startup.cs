@@ -44,15 +44,34 @@ namespace ForwardBackend
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
 
             // Middleware component
-            app.UseRouting();
-            app.UseDeveloperExceptionPage(); // gets more information on crash - should not be in release tho
-            app.UseStatusCodePages(); // adds the status code 200 etc.
+            /*The request handling pipeline is composed as a series of middleware components. 
+             * Each component performs asynchronous operations on an HttpContext and then either
+             * invokes the next middleware in the pipeline or terminates the request.*/
+
+            if (env.IsDevelopment()) {
+                app.UseDeveloperExceptionPage(); // gets more information on crash - should not be in release tho
+            } else {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
+
+            //app.UseHttpsRedirection(); //Might be needed at some point?
             app.UseStaticFiles(); // Enables static files (search in www. files) - might not be needed in api
+            //app.UseCookiePolicy(); // TODO look into cookies
+
+            app.UseRouting();
+            // app.UseRequestLocalization();
+            // app.UseCors();
+
+            //app.UseAuthentication(); //TODO Add later
+            //app.UseAuthorization(); //TODO add later
+            //app.UseSession();
+
+            app.UseStatusCodePages(); // adds the status code 200 etc.
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
             });
-
         }
     }
 }
