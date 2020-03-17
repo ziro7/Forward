@@ -44,7 +44,7 @@
                             </p>
                         }
                     </td>
-                    <td width="10%"><button class="btn btn-primary" @onclick="Modify">Modify</button><button class="btn btn-primary" @onclick="Delete">Delete</button></td>
+                    <td width="10%"><a href="@($"CVDetail/{Jobs[i].JobId}")" class="btn btn-primary">Modify</a>   <a href="@($"CVDetail/{Jobs[i].JobId}")" class="btn btn-primary" >Delete</a></td>
                 </tr>
                     } else {
             <tr>
@@ -58,7 +58,7 @@
                     }
                 </td>
                 <td width="30%"><b>@Jobs[i].CompanyName <br />@Jobs[i].StartDate.ToShortDateString() - @Jobs[i].EndDate.ToShortDateString()</b></td>
-                <td width="10%"><button class="btn btn-primary" @onclick="Modify">Modify</button><button class="btn btn-primary" @onclick="Delete">Delete</button></td>
+                <td width="10%"><a href="@($"CVDetail/{Jobs[i].JobId}")" class="btn btn-primary" >Modify</a>   <a href="@($"CVDetail/{Jobs[i].JobId}")" class="btn btn-primary" >Delete</a></td>
             </tr>
                         }
                     }

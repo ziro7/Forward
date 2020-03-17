@@ -1,0 +1,54 @@
+﻿@page "/CVDetail/{JobId}"
+@inherits CVDetailBase
+
+<h1>Details for the job </h1>
+
+@if (Job.WorkExperiences != null) {
+<EditForm Model="@Job" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <p>
+        <label>Company Name:</label>
+        <InputText @bind-Value="@Job.CompanyName" />
+        <ValidationMessage For="@(() => Job.CompanyName)" />
+    </p>
+    <p>
+        <label>From Date:</label>
+        <InputDate @bind-Value="@Job.StartDate" />
+    </p>
+    <p>
+        <label>End Date:</label>
+         <InputDate @bind-Value="@Job.EndDate" />
+    </p>
+    <br />
+    @foreach (var experience in Job.WorkExperiences) {
+        <p>
+            <label>WorkExperience - Titel:</label>
+            <InputText @bind-Value="@experience.Titel" />
+        </p>
+        <p>
+            <label>WorkExperience - From Date:</label>
+            <InputDate @bind-Value="@experience.FromDate" />
+        </p>
+        <p>
+            <label>WorkExperience - To Date:</label>
+            <InputDate @bind-Value="@experience.EndDate" />
+        </p>
+        <p>
+            <label>WorkExperience - Description (optional):</label>
+            <InputTextArea @bind-Value="@experience.Description" />
+        </p>
+        <br />
+
+    }
+
+</EditForm>
+
+
+    } else {
+    <h1>OK?</h1>
+    }
+
+
+
