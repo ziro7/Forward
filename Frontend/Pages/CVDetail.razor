@@ -3,52 +3,47 @@
 
 <h1>Details for the job </h1>
 
-@if (Job.WorkExperiences != null) {
-<EditForm Model="@Job" OnValidSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-
-    <p>
-        <label>Company Name:</label>
-        <InputText @bind-Value="@Job.CompanyName" />
-        <ValidationMessage For="@(() => Job.CompanyName)" />
-    </p>
-    <p>
-        <label>From Date:</label>
-        <InputDate @bind-Value="@Job.StartDate" />
-    </p>
-    <p>
-        <label>End Date:</label>
-         <InputDate @bind-Value="@Job.EndDate" />
-    </p>
-    <br />
-    @foreach (var experience in Job.WorkExperiences) {
-        <p>
-            <label>WorkExperience - Titel:</label>
-            <InputText @bind-Value="@experience.Titel" />
-        </p>
-        <p>
-            <label>WorkExperience - From Date:</label>
-            <InputDate @bind-Value="@experience.FromDate" />
-        </p>
-        <p>
-            <label>WorkExperience - To Date:</label>
-            <InputDate @bind-Value="@experience.EndDate" />
-        </p>
-        <p>
-            <label>WorkExperience - Description (optional):</label>
-            <InputTextArea @bind-Value="@experience.Description" />
-        </p>
-        <br />
-
-    }
-
-</EditForm>
-
-
-    } else {
-    <h1>OK?</h1>
-    }
+@if (Job != null) {
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="2"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>Job id: </b></td>
+                <td><p>@Job.JobId</p></td>
+            </tr>
+            <tr>
+                <td><b>Company Name: </b></td>
+                <td><p>@Job.CompanyName</p></td>
+            </tr>
+            <tr>
+                <td><b>Work in the periode: </b></td>
+                <td><p>@Job.StartDate - @Job.EndDate</p></td>
+            </tr>
+            <tr>
+                <td><b>Work experience: </b></td>
+                <td>
+                    @if (Job.WorkExperiences != null) {
+                        @foreach (var experience in Job.WorkExperiences) {
+                    <p>
+                        Work Experience Id: @experience.Id <br />
+                        <b>Titel: @experience.Titel </b><br />
+                        From @experience.FromDate to @experience.EndDate<br />
+                        Description:<br />
+                        @experience.Description<br />
+                    </p>
+                        }
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+} else {
+    <h1>Loading...</h1>
+}
 
 
 
