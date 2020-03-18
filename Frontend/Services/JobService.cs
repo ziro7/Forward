@@ -19,10 +19,11 @@ namespace Forward.Services
         public JobService(HttpClient httpClient) {
             _httpClient = httpClient;
         }
+
         public async Task<Job> AddJob(Job job) {
             var jobJson = new StringContent(JsonSerializer.Serialize(job), Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync("api/job", jobJson);
+            var response = await _httpClient.PostAsync("api/jobs", jobJson);
 
             if (response.IsSuccessStatusCode) {
                 return await JsonSerializer.DeserializeAsync<Job>(await response.Content.ReadAsStreamAsync());
@@ -31,7 +32,7 @@ namespace Forward.Services
         }
 
         public async Task DeleteJob(int jobId) {
-            await _httpClient.DeleteAsync($"api/job/{jobId}");
+            await _httpClient.DeleteAsync($"api/jobs/{jobId}");
         }
 
         public async Task<Job[]> GetAllJobs() {
@@ -73,8 +74,8 @@ namespace Forward.Services
         public async Task UpdateJob(Job job) {
             var jobJson =
             new StringContent(JsonSerializer.Serialize(job), Encoding.UTF8, "application/json");
-
-            await _httpClient.PutAsync("api/job", jobJson);
+            int jobId = job.JobId;
+            await _httpClient.PutAsync($"api/jobs/{jobId}", jobJson);
         }
     }
 }

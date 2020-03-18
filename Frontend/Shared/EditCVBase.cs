@@ -87,10 +87,6 @@ namespace Forward.Shared
                 Message = "Job updated succesfully.";
                 IsSaved = true;
             } 
-
-            //workExperience = new WorkExperience { }
-            //job = new Job { CompanyName = CompanyName  StartDate }
-            //JobService.AddJob()
             //TODO ideer - Authorize, Deploy, Validation some logic like dates - where? - make some input fields to server logic (hacker ranks)
         }
 
@@ -101,7 +97,7 @@ namespace Forward.Shared
             IsSaved = true;
         }
 
-        protected void NavigateToOverview() {
+        protected void NavigationToOverview() {
             NavigationManager.NavigateTo("/WhoAmI");
         }
 
