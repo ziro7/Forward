@@ -14,6 +14,8 @@ namespace Forward.Shared
         [Inject]
         public IJobService JobService { get; set; }
         [Inject]
+        public IWorkExperienceService WorkExperienceService { get; set; }
+        [Inject]
         public NavigationManager NavigationManager { get; set; }
         [Parameter]
         public string JobId { get; set; }
@@ -86,6 +88,9 @@ namespace Forward.Shared
                 StatusClass = "alert-succes";
                 Message = "Job updated succesfully.";
                 IsSaved = true;
+                foreach (var experiences in Job.WorkExperiences) {
+                    await WorkExperienceService.UpdateWorkExperience(experiences);
+                }
             } 
             //TODO ideer - Authorize, Deploy, Validation some logic like dates - where? - make some input fields to server logic (hacker ranks)
         }
@@ -99,6 +104,15 @@ namespace Forward.Shared
 
         protected void NavigationToOverview() {
             NavigationManager.NavigateTo("/WhoAmI");
+        }
+        protected async Task AddWorkExperience() {
+            var newWorkExperience = new WorkExperience() {Titel="Titel", Job=Job, JobForeignKey=Job.JobId };
+            Job.WorkExperiences.Add(newWorkExperience);
+            await WorkExperienceService.AddWorkExperience(newWorkExperience);
+        }
+
+        protected async Task DeleteWorkExperience(WorkExperience experience) {
+            await WorkExperienceService.DeleteWorkExperience(experience.Id);
         }
 
     }

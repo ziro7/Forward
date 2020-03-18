@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Core;
@@ -18,12 +19,19 @@ namespace Forward.Services
         public WorkExperienceService(HttpClient httpClient) {
             _httpClient = httpClient;
         }
-        public Task<WorkExperience> AddWorkExperience(WorkExperience workexperience) {
-            throw new NotImplementedException();
+        public async Task<WorkExperience> AddWorkExperience(WorkExperience workexperience) {
+
+            var workExperienceJson = new StringContent(JsonSerializer.Serialize(workexperience), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync($"api/WorkExperiences",workExperienceJson);
+
+            if (response.IsSuccessStatusCode) {
+                return await JsonSerializer.DeserializeAsync<WorkExperience>(await response.Content.ReadAsStreamAsync());
+            }
+            return null;
         }
 
-        public Task DeleteWorkExperience(int workexperienceId) {
-            throw new NotImplementedException();
+        public async Task DeleteWorkExperience(int workexperienceId) {
+            await _httpClient.DeleteAsync($"api/WorkExperiences/{workexperienceId}");
         }
 
         public async Task<IEnumerable<WorkExperience>> GetAllWorkExperiences() {
@@ -36,8 +44,10 @@ namespace Forward.Services
                 await _httpClient.GetStreamAsync($"api/WorkExperiences/{workexperienceId}"), options);
         }
 
-        public Task UpdateWorkExperience(WorkExperience workexperience) {
-            throw new NotImplementedException();
+        public async Task UpdateWorkExperience(WorkExperience workexperience) {
+            var workExperienceJson = new StringContent(JsonSerializer.Serialize(workexperience), Encoding.UTF8, "application/json");
+            int workExperienceId = workexperience.Id;
+            await _httpClient.PutAsync($"api/WorkExperiences/{workExperienceId}", workExperienceJson);
         }
     }
 }
