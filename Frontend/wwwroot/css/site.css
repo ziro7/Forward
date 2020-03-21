@@ -3,9 +3,14 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-a, .btn-link {
+/*a, .btn-link {
     color: #0366d6;
+}*/
+
+a, .btn-link {
+    color: #fff;
 }
+
 
 .btn-primary {
     color: #fff;
@@ -30,7 +35,8 @@ app {
 }
 
     .main .top-row {
-        background-color: #6c84d4;
+        border-radius: 4px;
+        background-color: #445886;
         border-bottom: 1px solid #949494;
         justify-content: flex-end;
     }
@@ -95,7 +101,7 @@ app {
 }
 
 .table {
-    border-color: #6c84d4;
+    border-color: #445886;
     border-radius: 10px;
     border-collapse: collapse;
     /*box-shadow: 5px 5px 0 rgba(0,0,0,0.1);*/
@@ -106,7 +112,7 @@ app {
 }
 
     .table td, th {
-        border: 1px solid #6c84d4;
+        border: 1px solid #445886;
         padding: 8px;
     }
 
@@ -115,25 +121,21 @@ app {
         vertical-align: middle;
     }
 
-    .table tr:nth-child(even) {
+    /*.table tr:nth-child(even) {
         background-color: #98adf5;
-    }
-
-    .table tr:hover {
-        background-color: #6c84d4;
-    }
+    }*/
 
     .table th {
         padding-top: 12px;
         padding-bottom: 12px;
         text-align: left;
-        background-color: #1c327a;
+        background-color: #445886;
         color: white;
         font-weight: 300;
     }
 
     .table thead {
-        background-color: #1c327a;
+        background-color: #445886;
         color: white;
         font-size: 1.5em;
         padding: 1rem;
@@ -205,4 +207,47 @@ img {
     margin-left: auto;
     margin-right: auto;
     width: 35%;
+}
+
+
+
+.table .thead-dark th {
+    color: #fff;
+    background-color: #445886;
+    border-color: #445886;
+}
+
+li {
+    display: list-item;
+    text-align: left;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #445886;
+    border-color: #445886;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #8a2020;
+    border-color: #8a2020;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #d7d7d7;
+    border-color: #000000;
+}
+
+.btn-succes {
+    color: #fff;
+    background-color: #256c22;
+    border-color: #256c22;
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: #03163c;
+    border-color: #03163c;
 }

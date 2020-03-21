@@ -22,7 +22,7 @@ namespace Core
         }
 
         private bool IsDatesValid() {
-            if (WorkExperiences.Count != null && WorkExperiences.Count>0) {
+            if (WorkExperiences != null && WorkExperiences.Count>0) {
                 foreach (var experience in WorkExperiences) {
                     if (experience.FromDate < StartDate) { return false; }
                     if (experience.EndDate > EndDate) { return false; }

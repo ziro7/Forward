@@ -48,13 +48,13 @@
                     <InputTextArea @bind-Value="@experience.Description" class="form-control" rows="4"/>
                 </div>
                 <br />
-                <a class="btn btn-danger" @onclick="@(()=> DeleteWorkExperience(@experience))">Delete WorkExperiences</a>
+                <button class="btn btn-danger" @onclick="@(()=> DeleteWorkExperience(@experience))">Delete WorkExperiences</button>
             }
 
             @if (Job.JobId > 0) {
-                <a class="btn btn-light" @onclick="@AddWorkExperience">Add WorkExperiences</a><br />
+                <button class="btn btn-success" @onclick="@AddWorkExperience">Add WorkExperiences</button><br />
                 <br />
-                <a class="btn btn-danger" @onclick="@DeleteJob">Delete Job</a>
+                <button class="btn btn-danger" @onclick="@DeleteJob">Delete Job</button>
             }
             @if (Message != string.Empty && IsSaved == false) {
                 <div class="alert @StatusClass">@Message</div>
