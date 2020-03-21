@@ -5,56 +5,62 @@
 @if (Job != null) {
     <section>
         @if (!IsSaved) {
-            <h3>EditCV</h3>
+            <br />
+        <h3>EditCV</h3>
+        <br />
 
-            <EditForm Model="@Job" OnValidSubmit="@HandleValidSubmit">
-                <DataAnnotationsValidator />
-                <ValidationSummary />
+        <EditForm Model="@Job" OnValidSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
 
-                <p>
-                    <label>Company Name:</label>
-                    <InputText @bind-Value="@Job.CompanyName" />
-                    <ValidationMessage For="@(() => Job.CompanyName)" />
-                </p>
-                <p>
-                    <label>From Date:</label>
-                    <InputDate @bind-Value="@Job.StartDate" />
-                </p>
-                <p>
-                    <label>End Date:</label>
-                    <InputDate @bind-Value="@Job.EndDate" />
-                </p>
+            <div class="form-group">
+                <label>Company Name:</label>
+                <InputText @bind-Value="@Job.CompanyName" class="form-control" />
+                <ValidationMessage For="@(() => Job.CompanyName)" />
+            </div>
+
+            <div class="form-group">
+                <label>From Date:</label>
+                <InputDate @bind-Value="@Job.StartDate" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>To Date:</label>
+                <InputDate @bind-Value="@Job.EndDate" class="form-control" />
+            </div>
+
+            <br />
+            @foreach (var experience in Job.WorkExperiences) {
+                <div class="form-group">
+                    <label>WorkExperience - Titel:</label>
+                    <InputText @bind-Value="@experience.Titel" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>WorkExperience - From Date:</label>
+                    <InputDate @bind-Value="@experience.FromDate" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>WorkExperience - To Date:</label>
+                    <InputDate @bind-Value="@experience.EndDate" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>WorkExperience - Description (optional):</label>
+                    <InputTextArea @bind-Value="@experience.Description" class="form-control" rows="4"/>
+                </div>
                 <br />
-                @foreach (var experience in Job.WorkExperiences) {
-                    <p>
-                        <label>WorkExperience - Titel:</label>
-                        <InputText @bind-Value="@experience.Titel" />
-                    </p>
-                    <p>
-                        <label>WorkExperience - From Date:</label>
-                        <InputDate @bind-Value="@experience.FromDate" />
-                    </p>
-                    <p>
-                        <label>WorkExperience - To Date:</label>
-                        <InputDate @bind-Value="@experience.EndDate" />
-                    </p>
-                    <p>
-                        <label>WorkExperience - Description (optional):</label>
-                        <InputTextArea @bind-Value="@experience.Description" />
-                    </p>
-                    <br />
-                    <a class="btn btn-danger" @onclick="@(()=> DeleteWorkExperience(@experience))">Delete WorkExperiences</a>
-                }
+                <a class="btn btn-danger" @onclick="@(()=> DeleteWorkExperience(@experience))">Delete WorkExperiences</a>
+            }
 
-                @if (Job.JobId > 0) {
-                    <a class="btn btn-light" @onclick="@AddWorkExperience">Add WorkExperiences</a><br />
-                    <a class="btn btn-danger" @onclick="@DeleteJob">Delete Job</a>
-                }
-                @if (Message != string.Empty && IsSaved == false) {
-                    <div class="alert @StatusClass">@Message</div>
-                }
-                <button type="submit" class="btn btn-primary">Save</button>
-            </EditForm>
+            @if (Job.JobId > 0) {
+                <a class="btn btn-light" @onclick="@AddWorkExperience">Add WorkExperiences</a><br />
+                <br />
+                <a class="btn btn-danger" @onclick="@DeleteJob">Delete Job</a>
+            }
+            @if (Message != string.Empty && IsSaved == false) {
+                <div class="alert @StatusClass">@Message</div>
+            }
+            <button type="submit" class="btn btn-primary">Save</button>
+        </EditForm>
         } else {
             //Bootstrap code where the alert box is based on the status class.
             <div class="alert @StatusClass">@Message</div>
