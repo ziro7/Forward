@@ -22,11 +22,15 @@ namespace Core
         }
 
         private bool IsDatesValid() {
-            foreach (var experience in WorkExperiences) {
-                if (experience.FromDate < StartDate) { return false; }
-                if (experience.EndDate > EndDate) { return false; }
+            if (WorkExperiences.Count != null && WorkExperiences.Count>0) {
+                foreach (var experience in WorkExperiences) {
+                    if (experience.FromDate < StartDate) { return false; }
+                    if (experience.EndDate > EndDate) { return false; }
+                }
+                return true;
+            } else {
+                return true;
             }
-            return true;
         }
     }
 }

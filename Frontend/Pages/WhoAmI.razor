@@ -1,6 +1,6 @@
 ﻿@page "/WhoAmI"
 @inherits WhoAmIBase
-@using Microsoft.AspNetCore.Html
+@using Forward.Components
 
 <h1 class="page-title">Who Am I</h1>
 
@@ -21,58 +21,59 @@
 </table>
 
 <h2>Karriereforløb</h2>
-@if (Jobs == null || Jobs[0].StartDate == DateTime.MinValue)  {
-        <p><em>Loading...</em></p>
-    } else {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th colspan="4"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (int i = 0; i < Jobs.Count(); i++) {
-                    @if (i % 2 == 1) {
-                <tr>
-                    <td width="30%"><b>@Jobs[i].CompanyName <br /> @Jobs[i].StartDate.ToShortDateString() - @Jobs[i].EndDate.ToShortDateString()</b></td>
-                    <td colspan="2" width="60%">
-                        @foreach (var item in Jobs[i].WorkExperiences) {
-                            <p>
-                                <u> @item.Titel - From: @item.FromDate.ToShortDateString() to: @item.EndDate.ToShortDateString()</u><br />
-                                @item.Description
-                                <br>
-                            </p>
-                        }
-                    </td>
-                    <td width="10%">
-                        <a href="@($"CVDetail/{Jobs[i].JobId}")" class="btn btn-primary">View</a>
-                        <a href="@($"EditCV/{Jobs[i].JobId}")" class="btn btn-primary">Modify Or Delete</a>
-                    </td>
-                </tr>
-                    } else {
+@if (Jobs == null || Jobs[0].StartDate == DateTime.MinValue) {
+    <p><em>Loading...</em></p>
+} else {
+    <table class="table">
+        <thead>
             <tr>
-                <td colspan="2" width="60%">
-                    @foreach (var item in Jobs[i].WorkExperiences) {
-                        <p>
-                            <u> @item.Titel - From: @item.FromDate.ToShortDateString() to: @item.EndDate.ToShortDateString()</u><br />
-                            @item.Description
-                            <br />
-                        </p>
-                    }
-                </td>
-                <td width="30%"><b>@Jobs[i].CompanyName <br />@Jobs[i].StartDate.ToShortDateString() - @Jobs[i].EndDate.ToShortDateString()</b></td>
-                <td width="10%">
-                    <a href="@($"CVDetail/{Jobs[i].JobId}")" class="btn btn-primary">View</a>
-                    <a href="@($"EditCV/{Jobs[i].JobId}")" class="btn btn-primary">Modify Or Delete</a>
-                </td>
+                <th colspan="4"></th>
             </tr>
-                        }
-                    }
-            </tbody>
-        </table>
-    }
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Jobs.Count(); i++) {
+                @if (i % 2 == 1) {
+                    <tr>
+                        <td width="30%"><b>@Jobs[i].CompanyName <br /> @Jobs[i].StartDate.ToShortDateString() - @Jobs[i].EndDate.ToShortDateString()</b></td>
+                        <td colspan="2" width="60%">
+                            @foreach (var item in Jobs[i].WorkExperiences) {
+                                <p>
+                                    <u> @item.Titel - From: @item.FromDate.ToShortDateString() to: @item.EndDate.ToShortDateString()</u><br />
+                                    @item.Description
+                                    <br>
+                                </p>
+                            }
+                        </td>
+                        <td width="10%">
+                            <a href="@($"CVDetail/{Jobs[i].JobId}")" class="btn btn-primary">View</a>
+                            <a href="@($"EditCV/{Jobs[i].JobId}")" class="btn btn-primary">Modify Or Delete</a>
+                        </td>
+                    </tr>
+                } else {
+                    <tr>
+                        <td colspan="2" width="60%">
+                            @foreach (var item in Jobs[i].WorkExperiences) {
+                                <p>
+                                    <u> @item.Titel - From: @item.FromDate.ToShortDateString() to: @item.EndDate.ToShortDateString()</u><br />
+                                    @item.Description
+                                    <br />
+                                </p>
+                            }
+                        </td>
+                        <td width="30%"><b>@Jobs[i].CompanyName <br />@Jobs[i].StartDate.ToShortDateString() - @Jobs[i].EndDate.ToShortDateString()</b></td>
+                        <td width="10%">
+                            <a href="@($"CVDetail/{Jobs[i].JobId}")" class="btn btn-primary">View</a>
+                            <a href="@($"EditCV/{Jobs[i].JobId}")" class="btn btn-primary">Modify Or Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
 <br />
-<a href="@($"EditCV")" class="btn btn-primary">Add new Job</a>
+<button @onclick="@AddNewJob" class="btn btn-dark">Add new Job(Quick)</button>
+<AddJobDialog @ref="AddJobDialog" CloseEventCallback="@AddJobDialog_OnDialogClose"></AddJobDialog>
 <br />
 <br />
 <h2>Uddannelse</h2>
