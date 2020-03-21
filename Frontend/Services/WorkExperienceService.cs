@@ -12,7 +12,7 @@ namespace Forward.Services
     public class WorkExperienceService : IWorkExperienceService
     {
         public readonly HttpClient _httpClient;
-        JsonSerializerOptions options = new JsonSerializerOptions {
+        readonly JsonSerializerOptions options = new JsonSerializerOptions {
             PropertyNameCaseInsensitive = true,
         };
 

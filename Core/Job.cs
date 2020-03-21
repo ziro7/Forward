@@ -16,5 +16,17 @@ namespace Core
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public List<WorkExperience> WorkExperiences { get; set; }
+
+        public bool IsValid() {
+            return IsDatesValid();
+        }
+
+        private bool IsDatesValid() {
+            foreach (var experience in WorkExperiences) {
+                if (experience.FromDate < StartDate) { return false; }
+                if (experience.EndDate > EndDate) { return false; }
+            }
+            return true;
+        }
     }
 }

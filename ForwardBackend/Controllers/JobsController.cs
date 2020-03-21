@@ -63,9 +63,9 @@ namespace ForwardBackend.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutJob(int id, Job job)
         {
-            if (id != job.JobId)
+            if (job == null)
             {
-                return BadRequest();
+                throw new ArgumentNullException();
             }
 
             _context.Entry(job).State = EntityState.Modified;

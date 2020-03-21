@@ -20,7 +20,7 @@ namespace Forward.Shared
         [Parameter]
         public string JobId { get; set; }
         public Job Job { get; set; }
-        public List<WorkExperience> workExperience { get; set; }
+        public List<WorkExperience> WorkExperience { get; set; }
 
         protected string Message = string.Empty;
         protected string StatusClass = string.Empty;
@@ -28,19 +28,18 @@ namespace Forward.Shared
 
         protected override async Task OnInitializedAsync() {
             IsSaved = false;
-            int jobId;
-            int.TryParse(JobId, out jobId);
+            int.TryParse(JobId, out int jobId);
 
             if (jobId == 0) {
                 // As the parameter is 0 the page was not entered with a "known" job - hence a new should be created.
                 // placing som default values.
-                workExperience = new List<WorkExperience> { new WorkExperience {
+                WorkExperience = new List<WorkExperience> { new WorkExperience {
                                             Titel = "Titel",
                                             Description = "What does your job involes?",
                                             FromDate = new DateTime(2020, 05, 01),
                                             EndDate = new DateTime(2020, 12, 01)
                                         } };
-                Job = new Job { CompanyName = "Company", StartDate = new DateTime(2020, 05, 01), EndDate = new DateTime(2020, 12, 01), WorkExperiences = workExperience };
+                Job = new Job { CompanyName = "Company", StartDate = new DateTime(2020, 05, 01), EndDate = new DateTime(2020, 12, 01), WorkExperiences = WorkExperience };
                 ;
             } else {
                 // The job is known - get it.
@@ -50,28 +49,34 @@ namespace Forward.Shared
         }
 
         protected async Task HandleValidSubmit() {
-            if (Job.JobId == 0) {
-                var newJob = await JobService.AddJob(Job);
-                if(newJob != null) {
-                    StatusClass = "alert-success";
-                    Message = "New Job Added successfully.";
-                    IsSaved = true;
-                } else {
-                    StatusClass = "alert-danger";
-                    Message = "Something went wrong adding the new Job. Please try again.";
-                    IsSaved = false;
-                }
 
-            } else {
-                await JobService.UpdateJob(Job);
-                StatusClass = "alert-succes";
-                Message = "Job updated succesfully.";
-                IsSaved = true;
-                foreach (var experiences in Job.WorkExperiences) {
-                    await WorkExperienceService.UpdateWorkExperience(experiences);
+            if (Job.IsValid()) {
+                if (Job.JobId == 0) {
+                    var newJob = await JobService.AddJob(Job);
+                    if (newJob != null) {
+                        StatusClass = "alert-success";
+                        Message = "New Job Added successfully.";
+                        IsSaved = true;
+                    } else {
+                        StatusClass = "alert-danger";
+                        Message = "Something went wrong adding the new Job. Please try again.";
+                        IsSaved = false;
+                    }
+
+                } else {
+                    await JobService.UpdateJob(Job);
+                    StatusClass = "alert-succes";
+                    Message = "Job updated succesfully.";
+                    IsSaved = true;
+                    foreach (var experiences in Job.WorkExperiences) {
+                        await WorkExperienceService.UpdateWorkExperience(experiences);
+                    }
                 }
-            } 
-            //TODO ideer - Authorize, Deploy, Validation some logic like dates - where? - make some input fields to server logic (hacker ranks)
+            } else {
+                StatusClass = "alert-danger";
+                Message = "Job is not valid";
+                IsSaved = false;
+            }
         }
 
         protected async Task DeleteJob() {
