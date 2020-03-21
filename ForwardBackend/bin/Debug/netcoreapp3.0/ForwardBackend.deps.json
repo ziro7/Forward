@@ -2574,7 +2574,8 @@
       },
       "Core/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.OData": "7.3.0"
+          "Microsoft.AspNetCore.OData": "7.3.0",
+          "System.ComponentModel.Annotations": "4.7.0"
         },
         "runtime": {
           "Core.dll": {}

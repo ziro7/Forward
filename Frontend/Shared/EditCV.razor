@@ -26,14 +26,14 @@
                 </p>
                 <br />
                 @foreach (var experience in Job.WorkExperiences) {
-                    <p>
-                        <label>WorkExperience - Titel:</label>
-                        <InputText @bind-Value="@experience.Titel" />
-                    </p>
-                    <p>
-                        <label>WorkExperience - From Date:</label>
-                        <InputDate @bind-Value="@experience.FromDate" />
-                    </p>
+            <p>
+                <label>WorkExperience - Titel:</label>
+                <InputText @bind-Value="@experience.Titel" />
+            </p>
+            <p>
+                <label>WorkExperience - From Date:</label>
+                <InputDate @bind-Value="@experience.FromDate" />
+            </p>
                     <p>
                         <label>WorkExperience - To Date:</label>
                         <InputDate @bind-Value="@experience.EndDate" />

@@ -26,27 +26,6 @@ namespace Forward.Shared
         protected string StatusClass = string.Empty;
         protected bool IsSaved;
 
-        [Required]
-        [StringLength(50, ErrorMessage = "Name is too long.")]
-        public string CompanyName { get; set; }
-
-        [Required]
-        public DateTime StartDate { get; set; }
-        [Required]
-        public DateTime EndDate { get; set; }
-
-        [Required]
-        public string Titel { get; set; }
-        [Required]
-        public DateTime WorkStartDate { get; set; }
-        [Required]
-        public DateTime WorkEndDate { get; set; }
-
-        [StringLength(200, ErrorMessage = "Description is too long.")]
-        public string Description { get; set; }
-
-
-
         protected override async Task OnInitializedAsync() {
             IsSaved = false;
             int jobId;
