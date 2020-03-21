@@ -80,7 +80,7 @@ namespace ForwardBackend.Controllers
         [HttpPost]
         public async Task<ActionResult<WorkExperience>> PostWorkExperience(WorkExperience workExperience)
         {
-            if(workExperience != null) {
+            if (workExperience != null) {
                 _context.WorkExperiences.Add(workExperience);
                 await _context.SaveChangesAsync();
 

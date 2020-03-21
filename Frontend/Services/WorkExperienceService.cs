@@ -22,7 +22,7 @@ namespace Forward.Services
         public async Task<WorkExperience> AddWorkExperience(WorkExperience workexperience) {
 
             var workExperienceJson = new StringContent(JsonSerializer.Serialize(workexperience), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync($"api/WorkExperiences",workExperienceJson);
+            var response = await _httpClient.PostAsync("api/WorkExperiences",workExperienceJson);
 
             if (response.IsSuccessStatusCode) {
                 return await JsonSerializer.DeserializeAsync<WorkExperience>(await response.Content.ReadAsStreamAsync());
@@ -36,7 +36,7 @@ namespace Forward.Services
 
         public async Task<IEnumerable<WorkExperience>> GetAllWorkExperiences() {
             return await JsonSerializer.DeserializeAsync<IEnumerable<WorkExperience>>(
-                await _httpClient.GetStreamAsync($"api/WorkExperiences"), options);
+                await _httpClient.GetStreamAsync("api/WorkExperiences"), options);
         }
 
         public async Task<WorkExperience> GetWorkExperience(int workexperienceId) {

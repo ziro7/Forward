@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Core
@@ -14,6 +15,7 @@ namespace Core
         public string Description { get; set; }
         // Below is used for Entity Framework to set up the relationship.
         public int JobForeignKey { get; set; }
+        [JsonIgnore]
         public Job Job { get; set; } 
     }
 }

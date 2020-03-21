@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ForwardBackend.Models;
 using Core;
+using Microsoft.AspNet.OData;
 
 namespace ForwardBackend.Controllers
 {
@@ -23,9 +24,9 @@ namespace ForwardBackend.Controllers
 
         // GET: api/Jobs
         [HttpGet]
+        //[EnableQuery()]
         public async Task<ActionResult<IEnumerable<Job>>> GetJobs()
         {
-            //return await _context.Jobs.ToListAsync(); // the workexperience will be empty here as it is a collection.
             var jobs = await _context.Jobs
                 .Include(j => j.WorkExperiences)
                 .ToListAsync()

@@ -107,11 +107,12 @@ namespace Forward.Shared
         }
         protected async Task AddWorkExperience() {
             var newWorkExperience = new WorkExperience() {Titel="Titel", Job=Job, JobForeignKey=Job.JobId };
-            Job.WorkExperiences.Add(newWorkExperience);
             await WorkExperienceService.AddWorkExperience(newWorkExperience);
+            Job.WorkExperiences.Add(newWorkExperience); 
         }
 
         protected async Task DeleteWorkExperience(WorkExperience experience) {
+            Job.WorkExperiences.Remove(Job.WorkExperiences.Find(w => w.Id == experience.Id));
             await WorkExperienceService.DeleteWorkExperience(experience.Id);
         }
 

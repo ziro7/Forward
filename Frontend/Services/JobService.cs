@@ -13,7 +13,7 @@ namespace Forward.Services
     {
         public readonly HttpClient _httpClient;
         JsonSerializerOptions options = new JsonSerializerOptions {
-            PropertyNameCaseInsensitive = true,
+            PropertyNameCaseInsensitive = true
         };
 
         public JobService(HttpClient httpClient) {
@@ -41,7 +41,8 @@ namespace Forward.Services
             await Task.Delay(2000);
             
             var jobsFromJson = await JsonSerializer.DeserializeAsync<IEnumerable<Job>>(
-                await _httpClient.GetStreamAsync($"api/jobs"), options);
+                //await _httpClient.GetStreamAsync($"api/jobs?$OrderBy=StartDate"), options); //Using OData functionality to order data.
+                await _httpClient.GetStreamAsync($"api/jobs"), options); 
 
             foreach (var job in jobsFromJson) {
                 List<WorkExperience> workExperience = job.WorkExperiences;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ForwardBackend.Models;
+using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,7 +39,8 @@ namespace ForwardBackend
 
             services.AddMvc(option => option.EnableEndpointRouting = false)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore); 
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            //services.AddOData(); Not supported yet
 
         }
 
@@ -62,14 +64,21 @@ namespace ForwardBackend
             //app.UseCookiePolicy(); // TODO look into cookies
 
             app.UseRouting();
-            // app.UseRequestLocalization();
-            // app.UseCors();
+            // app.UseRequestLocalization(); // TODO look into it later
+            // app.UseCors(); // TODO look into it later
 
             //app.UseAuthentication(); //TODO Add later
             //app.UseAuthorization(); //TODO add later
-            //app.UseSession();
+            //app.UseSession(); //TODO look into it later
 
             app.UseStatusCodePages(); // adds the status code 200 etc.
+
+            // Odata is not yet supported for 3.0.0
+            //app.UseMvc(routebuilder => 
+            //{
+            //    routebuilder.EnableDependencyInjection(); // Adding support for Odata.
+            //    routebuilder.Expand().Select().OrderBy(); // Currently I only plan to use orderby.
+            //});
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
