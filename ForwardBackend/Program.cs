@@ -18,16 +18,16 @@ namespace ForwardBackend
             // Above is replaced with below code to seed the datebase after build but before run.
 
             var host = CreateHostBuilder(args).Build();
+            var logger = host.Services.GetRequiredService<ILogger<Program>>();
 
-            using(var scope = host.Services.CreateScope()) {
+            using (var scope = host.Services.CreateScope()) {
                 var services = scope.ServiceProvider;
                 try {
                     var context = services.GetRequiredService<AppDbContext>();
                     DBInitializer.Seed(context);
+                    logger.LogInformation("Seeding database");  
                 } catch (Exception ex){
-                    //ToDo - implement Logging with something like below.
-                    //var logger = services.GetRequiredService<ILogger<Program>>();
-                    //logger.LogError(ex, "An error occurred seeding the DB.");
+                    logger.LogError(LoggingEvents.SystemEvent, ex, "An error occurred getting the context.");
                 }
             }
 
@@ -36,6 +36,10 @@ namespace ForwardBackend
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(logging => {
+                        logging.ClearProviders();
+                        logging.AddConsole();
+                })
                 .ConfigureWebHostDefaults(webBuilder => {
                     webBuilder.UseStartup<Startup>();
                     webBuilder.UseUrls(

@@ -8,6 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using ForwardBackend.Models;
 using Core;
 using Microsoft.AspNet.OData;
+using Microsoft.Extensions.Logging;
+using System.Resources;
+using System.Reflection;
+using System.Globalization;
 
 namespace ForwardBackend.Controllers
 {
@@ -16,10 +20,12 @@ namespace ForwardBackend.Controllers
     public class JobsController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly ILogger<JobsController> _logger;
 
-        public JobsController(AppDbContext context)
+        public JobsController(AppDbContext context, ILogger<JobsController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: api/Jobs
@@ -27,12 +33,14 @@ namespace ForwardBackend.Controllers
         //[EnableQuery()]
         public async Task<ActionResult<IEnumerable<Job>>> GetJobs()
         {
+            _logger.LogInformation(LoggingEvents.ListItems, "GetJobs Called");
             var jobs = await _context.Jobs
                 .Include(j => j.WorkExperiences)
                 .ToListAsync()
                 .ConfigureAwait(true);
 
             if (jobs == null) {
+                _logger.LogInformation(LoggingEvents.GetItemNotFound, "GetJobs Called but failed and returned NotFound");
                 return NotFound();
             }
 
@@ -43,6 +51,7 @@ namespace ForwardBackend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Job>> GetJob(int id)
         {
+            _logger.LogInformation(LoggingEvents.GetItem, "Getting job {Id}", id);
             var job = await _context.Jobs
                 .Include(j => j.WorkExperiences)
                 .AsNoTracking()
@@ -51,6 +60,7 @@ namespace ForwardBackend.Controllers
 
             if (job == null)
             {
+                _logger.LogWarning(LoggingEvents.GetItemNotFound, "GetJob({Id}) NOT FOUND", id);
                 return NotFound();
             }
 
@@ -63,6 +73,7 @@ namespace ForwardBackend.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutJob(int id, Job job)
         {
+            _logger.LogInformation(LoggingEvents.InsertItem, "Putjob {Id}", id);
             if (job == null)
             {
                 throw new ArgumentNullException();
@@ -95,6 +106,7 @@ namespace ForwardBackend.Controllers
         [HttpPost]
         public async Task<ActionResult<Job>> PostJob(Job job)
         {
+            _logger.LogInformation(LoggingEvents.UpdateItem, "PostJob from company {0}", job.CompanyName);
             _context.Jobs.Add(job);
             await _context.SaveChangesAsync();
 
@@ -105,6 +117,7 @@ namespace ForwardBackend.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Job>> DeleteJob(int id)
         {
+            _logger.LogInformation(LoggingEvents.DeleteItem, "PostJob from company {id}", id);
             var job = await _context.Jobs.FindAsync(id);
             if (job == null)
             {

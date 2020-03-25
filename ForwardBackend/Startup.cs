@@ -45,7 +45,7 @@ namespace ForwardBackend
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger) {
 
             // Middleware component
             /*The request handling pipeline is composed as a series of middleware components. 
@@ -53,6 +53,7 @@ namespace ForwardBackend
              * invokes the next middleware in the pipeline or terminates the request.*/
 
             if (env.IsDevelopment()) {
+                logger.LogInformation("In Development environment");
                 app.UseDeveloperExceptionPage(); // gets more information on crash - should not be in release tho
             } else {
                 app.UseExceptionHandler("/Error");

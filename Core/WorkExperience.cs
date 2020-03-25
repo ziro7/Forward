@@ -16,7 +16,7 @@ namespace Core
         public string Description { get; set; }
         // Below is used for Entity Framework to set up the relationship.
         public int JobForeignKey { get; set; }
-        [JsonIgnore]
+        [JsonIgnore] //causes cyclic serialization if not ignored in json.
         public Job Job { get; set; } 
     }
 }

@@ -10,5 +10,7 @@ namespace ForwardBackend.Models
     {
         IEnumerable<Job> GetAllJobs();
         Job GetJobById(int jobId);
+
+
     }
 }
