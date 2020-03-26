@@ -27,7 +27,7 @@ namespace ForwardBackend
                     DBInitializer.Seed(context);
                     logger.LogInformation("Seeding database");  
                 } catch (Exception ex){
-                    logger.LogError(LoggingEvents.SystemEvent, ex, "An error occurred getting the context.");
+                    logger.LogWarning(LoggingEvents.SystemEvent, ex, "An error occurred getting the context.");
                 }
             }
 
@@ -36,9 +36,11 @@ namespace ForwardBackend
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureLogging(logging => {
-                        logging.ClearProviders();
-                        logging.AddConsole();
+                .ConfigureLogging((context, logging) => {
+                    logging.ClearProviders();
+                    logging.AddConfiguration(context.Configuration.GetSection("Logging"));
+                    logging.AddDebug();
+                    logging.AddConsole();
                 })
                 .ConfigureWebHostDefaults(webBuilder => {
                     webBuilder.UseStartup<Startup>();

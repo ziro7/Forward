@@ -11,13 +11,13 @@ namespace Forward.Pages
     public class CVDetailBase : ComponentBase
     {
         [Parameter]
-        public string JobId { get; set; }
+        public int JobId { get; set; }
         [Inject]
         public IJobService JobService { get; set; }
         public Job Job { get; set; } = new Job();
 
         protected override async Task OnInitializedAsync() {
-            Job = await JobService.GetJob(int.Parse(JobId));
+            Job = await JobService.GetJob(JobId);
         }
     }
 }
