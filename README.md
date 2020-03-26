@@ -15,6 +15,7 @@ Api:
 - Seed funtion will populate database.
 - Logging - In program.cs, startup and controller. 
 - CRUD operations
+- Swagger enabled
 
 Blazor:
 - SignalR is included 
@@ -29,7 +30,6 @@ CoreTest:
 
 ToDo: 
 Add Areas - add a new section with puzzles
-Add Swagger
 Add Authorization
 Add complex form validation
 Add integration test and test on API controller.
