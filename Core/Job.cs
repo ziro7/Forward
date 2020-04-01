@@ -15,6 +15,7 @@ namespace Core
         public string CompanyName { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        [ValidateComplexType]
         public List<WorkExperience> WorkExperiences { get; set; }
 
         public bool IsValid() {

@@ -159,3 +159,11 @@ C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Swashb
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Blazor.DataAnnotations.Validation.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Components.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.JSInterop.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\System.Text.Encodings.Web.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\System.Text.Json.dll

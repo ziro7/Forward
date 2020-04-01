@@ -48,11 +48,8 @@
           "Microsoft.AspNetCore.Authentication.Core.Reference": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.OAuth": "3.0.0.0",
-          "Microsoft.AspNetCore.Authorization.Reference": "3.0.0.0",
           "Microsoft.AspNetCore.Authorization.Policy.Reference": "3.0.0.0",
           "Microsoft.AspNetCore.Components.Authorization": "3.0.0.0",
-          "Microsoft.AspNetCore.Components": "3.0.0.0",
-          "Microsoft.AspNetCore.Components.Forms": "3.0.0.0",
           "Microsoft.AspNetCore.Components.Server": "3.0.0.0",
           "Microsoft.AspNetCore.Components.Web": "3.0.0.0",
           "Microsoft.AspNetCore.Connections.Abstractions": "3.0.0.0",
@@ -83,7 +80,6 @@
           "Microsoft.AspNetCore.Identity": "3.0.0.0",
           "Microsoft.AspNetCore.Localization": "3.0.0.0",
           "Microsoft.AspNetCore.Localization.Routing": "3.0.0.0",
-          "Microsoft.AspNetCore.Metadata": "3.0.0.0",
           "Microsoft.AspNetCore.Mvc.Abstractions.Reference": "3.0.0.0",
           "Microsoft.AspNetCore.Mvc.ApiExplorer": "3.0.0.0",
           "Microsoft.AspNetCore.Mvc.Core.Reference": "3.0.0.0",
@@ -152,7 +148,6 @@
           "Microsoft.Extensions.Options.ConfigurationExtensions": "3.0.0.0",
           "Microsoft.Extensions.Options.DataAnnotations": "3.0.0.0",
           "Microsoft.Extensions.WebEncoders": "3.0.0.0",
-          "Microsoft.JSInterop": "3.0.0.0",
           "Microsoft.Net.Http.Headers.Reference": "3.0.0.0",
           "Microsoft.VisualBasic.Core": "10.0.4.0",
           "Microsoft.VisualBasic": "10.0.0.0",
@@ -279,8 +274,6 @@
           "System.Text.Encoding.CodePages.Reference": "4.1.2.0",
           "System.Text.Encoding.Reference": "4.1.1.0",
           "System.Text.Encoding.Extensions.Reference": "4.1.1.0",
-          "System.Text.Encodings.Web.Reference": "4.0.4.0",
-          "System.Text.Json.Reference": "4.0.0.0",
           "System.Text.RegularExpressions.Reference": "4.2.1.0",
           "System.Threading.Channels": "4.0.1.0",
           "System.Threading.Reference": "4.1.1.0",
@@ -331,16 +324,73 @@
           "Microsoft.AspNetCore.Http.Extensions": "2.0.0"
         }
       },
-      "Microsoft.AspNetCore.Authorization/2.0.0": {
+      "Microsoft.AspNetCore.Authorization/3.1.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Metadata": "3.1.0",
           "Microsoft.Extensions.Logging.Abstractions": "3.1.2",
           "Microsoft.Extensions.Options": "3.1.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.100.19.56601"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.dll": {}
         }
       },
       "Microsoft.AspNetCore.Authorization.Policy/2.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Abstractions": "2.0.0",
-          "Microsoft.AspNetCore.Authorization": "2.0.0"
+          "Microsoft.AspNetCore.Authorization": "3.1.0"
+        }
+      },
+      "Microsoft.AspNetCore.Blazor.DataAnnotations.Validation/3.2.0-preview1.20073.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Forms": "3.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.AspNetCore.Blazor.DataAnnotations.Validation.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.200.20.7301"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.AspNetCore.Blazor.DataAnnotations.Validation.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components/3.1.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "3.1.0",
+          "Microsoft.AspNetCore.Components.Analyzers": "3.1.0",
+          "Microsoft.JSInterop": "3.1.0",
+          "System.ComponentModel.Annotations": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Components.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.100.19.56601"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Components.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.Analyzers/3.1.0": {},
+      "Microsoft.AspNetCore.Components.Forms/3.1.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.0",
+          "System.ComponentModel.Annotations": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Components.Forms.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.100.19.56601"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Components.Forms.dll": {}
         }
       },
       "Microsoft.AspNetCore.Hosting.Abstractions/2.0.0": {
@@ -362,7 +412,7 @@
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
         "dependencies": {
-          "System.Text.Encodings.Web": "4.5.0"
+          "System.Text.Encodings.Web": "4.7.0"
         }
       },
       "Microsoft.AspNetCore.Http/2.0.0": {
@@ -377,7 +427,7 @@
       "Microsoft.AspNetCore.Http.Abstractions/2.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "2.0.0",
-          "System.Text.Encodings.Web": "4.5.0"
+          "System.Text.Encodings.Web": "4.7.0"
         }
       },
       "Microsoft.AspNetCore.Http.Extensions/2.0.0": {
@@ -406,6 +456,17 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Metadata/3.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.100.19.56601"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.dll": {}
         }
       },
       "Microsoft.AspNetCore.Mvc.Abstractions/2.0.0": {
@@ -506,7 +567,7 @@
       "Microsoft.AspNetCore.WebUtilities/2.0.0": {
         "dependencies": {
           "Microsoft.Net.Http.Headers": "2.0.0",
-          "System.Text.Encodings.Web": "4.5.0"
+          "System.Text.Encodings.Web": "4.7.0"
         }
       },
       "Microsoft.Bcl.AsyncInterfaces/1.1.0": {
@@ -1052,7 +1113,7 @@
       },
       "Microsoft.Extensions.DependencyModel/3.0.0": {
         "dependencies": {
-          "System.Text.Json": "4.6.0"
+          "System.Text.Json": "4.7.0"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {
@@ -1151,6 +1212,20 @@
             "assemblyVersion": "3.0.8.0",
             "fileVersion": "3.0.8.0"
           }
+        }
+      },
+      "Microsoft.JSInterop/3.1.0": {
+        "dependencies": {
+          "System.Text.Json": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.JSInterop.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.100.19.56504"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.JSInterop.dll": {}
         }
       },
       "Microsoft.Net.Http.Headers/2.0.0": {
@@ -2530,8 +2605,28 @@
           "System.Text.Encoding": "4.3.0"
         }
       },
-      "System.Text.Encodings.Web/4.5.0": {},
-      "System.Text.Json/4.6.0": {
+      "System.Text.Encodings.Web/4.7.0": {
+        "runtime": {
+          "lib/netstandard2.1/System.Text.Encodings.Web.dll": {
+            "assemblyVersion": "4.0.5.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/System.Text.Encodings.Web.dll": {}
+        }
+      },
+      "System.Text.Json/4.7.0": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.7.0",
+          "System.Text.Encodings.Web": "4.7.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        },
         "compile": {
           "lib/netcoreapp3.0/System.Text.Json.dll": {}
         }
@@ -2634,6 +2729,7 @@
       },
       "Core/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Blazor.DataAnnotations.Validation": "3.2.0-preview1.20073.1",
           "Microsoft.AspNetCore.OData": "7.3.0",
           "System.ComponentModel.Annotations": "4.7.0"
         },
@@ -2680,12 +2776,6 @@
         },
         "compileOnly": true
       },
-      "Microsoft.AspNetCore.Authorization.Reference/3.0.0.0": {
-        "compile": {
-          "Microsoft.AspNetCore.Authorization.dll": {}
-        },
-        "compileOnly": true
-      },
       "Microsoft.AspNetCore.Authorization.Policy.Reference/3.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Authorization.Policy.dll": {}
@@ -2695,18 +2785,6 @@
       "Microsoft.AspNetCore.Components.Authorization/3.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Components.Authorization.dll": {}
-        },
-        "compileOnly": true
-      },
-      "Microsoft.AspNetCore.Components/3.0.0.0": {
-        "compile": {
-          "Microsoft.AspNetCore.Components.dll": {}
-        },
-        "compileOnly": true
-      },
-      "Microsoft.AspNetCore.Components.Forms/3.0.0.0": {
-        "compile": {
-          "Microsoft.AspNetCore.Components.Forms.dll": {}
         },
         "compileOnly": true
       },
@@ -2887,12 +2965,6 @@
       "Microsoft.AspNetCore.Localization.Routing/3.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Localization.Routing.dll": {}
-        },
-        "compileOnly": true
-      },
-      "Microsoft.AspNetCore.Metadata/3.0.0.0": {
-        "compile": {
-          "Microsoft.AspNetCore.Metadata.dll": {}
         },
         "compileOnly": true
       },
@@ -3301,12 +3373,6 @@
       "Microsoft.Extensions.WebEncoders/3.0.0.0": {
         "compile": {
           "Microsoft.Extensions.WebEncoders.dll": {}
-        },
-        "compileOnly": true
-      },
-      "Microsoft.JSInterop/3.0.0.0": {
-        "compile": {
-          "Microsoft.JSInterop.dll": {}
         },
         "compileOnly": true
       },
@@ -4066,18 +4132,6 @@
         },
         "compileOnly": true
       },
-      "System.Text.Encodings.Web.Reference/4.0.4.0": {
-        "compile": {
-          "System.Text.Encodings.Web.dll": {}
-        },
-        "compileOnly": true
-      },
-      "System.Text.Json.Reference/4.0.0.0": {
-        "compile": {
-          "System.Text.Json.dll": {}
-        },
-        "compileOnly": true
-      },
       "System.Text.RegularExpressions.Reference/4.2.1.0": {
         "compile": {
           "System.Text.RegularExpressions.dll": {}
@@ -4268,12 +4322,12 @@
       "path": "microsoft.aspnetcore.authentication.core/2.0.0",
       "hashPath": "microsoft.aspnetcore.authentication.core.2.0.0.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Authorization/2.0.0": {
+    "Microsoft.AspNetCore.Authorization/3.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-jyU6UjcqHmuzuzqUsmpgMXHbnybaPcNYKDEHHaCJ1YhIiSlStb1bGy7L0IDViqdZWmiRi3UPjdIMkaU6FbuDag==",
-      "path": "microsoft.aspnetcore.authorization/2.0.0",
-      "hashPath": "microsoft.aspnetcore.authorization.2.0.0.nupkg.sha512"
+      "sha512": "sha512-R/0qFIu1m7jJFD0OuLIjLXC0uYQxFwwW7ylVvGgUPUpOJJK0bKJjfrDu20kY1Yw0hy9ejZYZEdUZHRm3ei0+3w==",
+      "path": "microsoft.aspnetcore.authorization/3.1.0",
+      "hashPath": "microsoft.aspnetcore.authorization.3.1.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authorization.Policy/2.0.0": {
       "type": "package",
@@ -4281,6 +4335,34 @@
       "sha512": "sha512-pICwOI/LptLrTIa4eYeYglODNYuk5tsEm/4Ny5utvy5cu6H+Jm5wYBGbPUEPLqRTQX/2SJcnBEZA2gZYBlubYw==",
       "path": "microsoft.aspnetcore.authorization.policy/2.0.0",
       "hashPath": "microsoft.aspnetcore.authorization.policy.2.0.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Blazor.DataAnnotations.Validation/3.2.0-preview1.20073.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TXacJJnPq3WZSe3Gkj88E7cHmOkC4jOin7M0i9fQvEcd9b8q4D/Fqrw08Dl9nxuZoemwCSb+Q/YLYM/84pPVRA==",
+      "path": "microsoft.aspnetcore.blazor.dataannotations.validation/3.2.0-preview1.20073.1",
+      "hashPath": "microsoft.aspnetcore.blazor.dataannotations.validation.3.2.0-preview1.20073.1.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YIcE9FGLLMt8vnjaQEf6PhI4ikxibEv6t06SQTb9BAd//UxrOklqDhCzWldF6zXxh3+VnyVGFNOOlz9Tg8vQ8A==",
+      "path": "microsoft.aspnetcore.components/3.1.0",
+      "hashPath": "microsoft.aspnetcore.components.3.1.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.Analyzers/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DWvG559bbeNMkesZ/sYZqEH9iTx4N7WbdyChf2PS7ouZBcWjRSt/V+sKuofrTpb0c8STe14+U3kMKO5FtwaT/g==",
+      "path": "microsoft.aspnetcore.components.analyzers/3.1.0",
+      "hashPath": "microsoft.aspnetcore.components.analyzers.3.1.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.Forms/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BkW3QVWzpTlqJWbBasahUCrebUQraIZKYS3sK1nTQOw1xNFjfBmmiLipT/9jinnQh3ogatAtfhPxNr6DMrheQg==",
+      "path": "microsoft.aspnetcore.components.forms/3.1.0",
+      "hashPath": "microsoft.aspnetcore.components.forms.3.1.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Hosting.Abstractions/2.0.0": {
       "type": "package",
@@ -4337,6 +4419,13 @@
       "sha512": "sha512-ZATTJemEVkOYCM73n/UnHaw8UcGrFrBJmQ+tdnyvYi/M3wSr5xfYUWcZGxlQU9vDd7VrhA/xK0bkGTmUjsKsDQ==",
       "path": "microsoft.aspnetcore.jsonpatch/3.0.3",
       "hashPath": "microsoft.aspnetcore.jsonpatch.3.0.3.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Metadata/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZiNCjglz4kR2OGElM2u/S6cS1ArAxE6lP4BeniCZcr6l+ACzslKgcPGOTY8/Glppx6CDzMKfmyqV+VbFh5CyjQ==",
+      "path": "microsoft.aspnetcore.metadata/3.1.0",
+      "hashPath": "microsoft.aspnetcore.metadata.3.1.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Mvc.Abstractions/2.0.0": {
       "type": "package",
@@ -4708,6 +4797,13 @@
       "sha512": "sha512-9E1gXBRJta8+UXooYpJkp/8g6Cy4kFQl3iURduGhR7/vU8rGKTWEMJ3tUKOO2m1qzJOfaog/n89lyjdi7S56Rg==",
       "path": "microsoft.identity.client/3.0.8",
       "hashPath": "microsoft.identity.client.3.0.8.nupkg.sha512"
+    },
+    "Microsoft.JSInterop/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A6w985fb6RyL4x69TILW3sF2DcAufUPDOwN1LpdRZ3sZcpvb2ZnM2TrarleDhtqfS5g0Ot+2AG5AM9svH9Cm8Q==",
+      "path": "microsoft.jsinterop/3.1.0",
+      "hashPath": "microsoft.jsinterop.3.1.0.nupkg.sha512"
     },
     "Microsoft.Net.Http.Headers/2.0.0": {
       "type": "package",
@@ -5591,19 +5687,19 @@
       "path": "system.text.encoding.extensions/4.3.0",
       "hashPath": "system.text.encoding.extensions.4.3.0.nupkg.sha512"
     },
-    "System.Text.Encodings.Web/4.5.0": {
+    "System.Text.Encodings.Web/4.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Xg4G4Indi4dqP1iuAiMSwpiWS54ZghzR644OtsRCm/m/lBMG8dUBhLVN7hLm8NNrNTR+iGbshCPTwrvxZPlm4g==",
-      "path": "system.text.encodings.web/4.5.0",
-      "hashPath": "system.text.encodings.web.4.5.0.nupkg.sha512"
+      "sha512": "sha512-IJanJWPQvya2sbGStt3Fkdy4IaomUBSadAfYWeJDQw0zclMk9ixSvMeei6cSmTTQ6ZkGIIAbhHZVCoLR7GgX7Q==",
+      "path": "system.text.encodings.web/4.7.0",
+      "hashPath": "system.text.encodings.web.4.7.0.nupkg.sha512"
     },
-    "System.Text.Json/4.6.0": {
+    "System.Text.Json/4.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4F8Xe+JIkVoDJ8hDAZ7HqLkjctN/6WItJIzQaifBwClC7wmoLSda/Sv2i6i1kycqDb3hWF4JCVbpAweyOKHEUA==",
-      "path": "system.text.json/4.6.0",
-      "hashPath": "system.text.json.4.6.0.nupkg.sha512"
+      "sha512": "sha512-IPq/x/d5nAcnD3vIyM3AbPOaTgcqrh0AqPSx7U53UFu3M6k1TH1u/eXc9/h4jm/3mpP1WRUpevlPY4PACd7AWw==",
+      "path": "system.text.json/4.7.0",
+      "hashPath": "system.text.json.4.7.0.nupkg.sha512"
     },
     "System.Text.RegularExpressions/4.3.0": {
       "type": "package",
@@ -5703,27 +5799,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.AspNetCore.Authorization.Reference/3.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Microsoft.AspNetCore.Authorization.Policy.Reference/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
     },
     "Microsoft.AspNetCore.Components.Authorization/3.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.AspNetCore.Components/3.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.AspNetCore.Components.Forms/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -5874,11 +5955,6 @@
       "sha512": ""
     },
     "Microsoft.AspNetCore.Localization.Routing/3.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.AspNetCore.Metadata/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -6219,11 +6295,6 @@
       "sha512": ""
     },
     "Microsoft.Extensions.WebEncoders/3.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.JSInterop/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -6854,16 +6925,6 @@
       "sha512": ""
     },
     "System.Text.Encoding.Extensions.Reference/4.1.1.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "System.Text.Encodings.Web.Reference/4.0.4.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "System.Text.Json.Reference/4.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

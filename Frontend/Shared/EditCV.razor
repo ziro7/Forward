@@ -10,7 +10,8 @@
         <br />
 
         <EditForm Model="@Job" OnValidSubmit="@HandleValidSubmit">
-            <DataAnnotationsValidator />
+            <ObjectGraphDataAnnotationsValidator />
+            @*<DataAnnotationsValidator />*@
             <ValidationSummary />
 
             <div class="form-group">
@@ -34,10 +35,12 @@
                 <div class="form-group">
                     <label>WorkExperience - Titel:</label>
                     <InputText @bind-Value="@experience.Titel" class="form-control" />
+                    <ValidationMessage For="@(() => experience.Titel)" />
                 </div>
                 <div class="form-group">
                     <label>WorkExperience - From Date:</label>
                     <InputDate @bind-Value="@experience.FromDate" class="form-control" />
+                    <ValidationMessage For="@(() => experience.FromDate)" />
                 </div>
                 <div class="form-group">
                     <label>WorkExperience - To Date:</label>
@@ -45,7 +48,8 @@
                 </div>
                 <div class="form-group">
                     <label>WorkExperience - Description (optional):</label>
-                    <InputTextArea @bind-Value="@experience.Description" class="form-control" rows="4"/>
+                    <InputTextArea @bind-Value="@experience.Description" class="form-control" rows="4" />
+                    <ValidationMessage For="@(() => experience.Description)" />
                 </div>
                 <br />
                 <button class="btn btn-danger" @onclick="@(()=> DeleteWorkExperience(@experience))">Delete WorkExperiences</button>

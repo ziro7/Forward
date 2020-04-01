@@ -10,9 +10,12 @@ namespace Core
     public class WorkExperience
     {
         public int Id { get; set; }
+        [Required]
         public string Titel { get; set; }
+        [Required]
         public DateTime FromDate { get; set; }
         public DateTime EndDate { get; set; }
+        [StringLength(1000, ErrorMessage = "Please limit the description to 1.000 chars")]
         public string Description { get; set; }
         // Below is used for Entity Framework to set up the relationship.
         public int JobForeignKey { get; set; }

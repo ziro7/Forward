@@ -38,6 +38,10 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "Microsoft.AspNetCore.Blazor.DataAnnotations.Validation": {
+              "target": "Package",
+              "version": "[3.2.0-preview1.20073.1, )"
+            },
             "Microsoft.AspNetCore.OData": {
               "target": "Package",
               "version": "[7.3.0, )"
