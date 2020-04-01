@@ -21,6 +21,7 @@ Blazor:
 - SignalR is included 
 - Formvalidation
 - Complex form validation 
+- Custom validation
 - Bootstrap
 
 Core:
