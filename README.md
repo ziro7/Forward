@@ -15,10 +15,12 @@ Api:
 - Seed funtion will populate database.
 - Logging - In program.cs, startup and controller. 
 - CRUD operations
+- Swagger enabled
 
 Blazor:
 - SignalR is included 
 - Formvalidation
+- Complex form validation 
 - Bootstrap
 
 Core:
@@ -28,8 +30,8 @@ CoreTest:
 - Unittests
 
 ToDo: 
-Add Areas - add a new section with puzzles
-Add Swagger
-Add Authorization
-Add complex form validation
-Add integration test and test on API controller.
+- Add Areas - add a new section with puzzles with an controller and add to blazor frontend
+- Add Authorization - both blazor and api. (bearer token maybe)
+- Add integration test and test on API controller. xUnit - Moq
+- Add tips and tricks items
+- microservices and container
