@@ -21,11 +21,12 @@ Blazor:
 - SignalR is included 
 - Formvalidation
 - Complex form validation 
-- Custom validation
+- Custom data validation
+- Model logic validation
 - Bootstrap
 
 Core:
-- Model validation
+- Model validation (replaced with blazor framework)
 
 CoreTest:
 - Unittests
