@@ -25,10 +25,12 @@
                         <p>
                             <label>From Date:</label>
                             <InputDate @bind-Value="@NewJob.StartDate" />
+                            <ValidationMessage For="@(() => NewJob.StartDate)" />
                         </p>
                         <p>
                             <label>End Date:</label>
                             <InputDate @bind-Value="@NewJob.EndDate" />
+                            <ValidationMessage For="@(() => NewJob.EndDate)" />
                         </p>
 
                         @if (Message != string.Empty && IsSaved == false) {
