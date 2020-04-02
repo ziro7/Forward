@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Forward.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -40,6 +41,10 @@ namespace Forward
             });
             services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; }); //Added the option for detailed info delivered to the browser.
             // This is the place to add HTTP client services or other services needed.
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme) //Adding default authentication
+                .AddCookie();  
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +60,9 @@ namespace Forward
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapBlazorHub(); //SignalR hub
