@@ -24,16 +24,19 @@ Blazor:
 - Custom data validation
 - Model logic validation
 - Bootstrap
+- Login funktionality 
 
 Core:
-- Model validation (replaced with blazor framework)
+- Model validation (replaced with blazor framework model validation)
 
 CoreTest:
-- Unittests
+- Unittests - TODO : Need to update
 
 ToDo: 
-- Add Areas - add a new section with puzzles with an controller and add to blazor frontend
 - Add Authorization - both blazor and api. (bearer token maybe)
 - Add integration test and test on API controller. xUnit - Moq
 - Add tips and tricks items
 - microservices and container
+
+Out of scope:
+- Areas - Decided against using areas as it don't make much sense in my app at this point. Can add later.
