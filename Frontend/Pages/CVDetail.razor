@@ -1,5 +1,6 @@
 ﻿@page "/CVDetail/{JobId:int}"
 @inherits CVDetailBase
+@attribute [Authorize]
 <br />
 <h1>Details for the job </h1>
 
@@ -28,13 +29,13 @@
                 <td>
                     @if (Job.WorkExperiences != null) {
                         @foreach (var experience in Job.WorkExperiences) {
-                    <p>
-                        Work Experience Id: @experience.Id <br />
-                        <b>Titel: @experience.Titel </b><br />
-                        From @experience.FromDate to @experience.EndDate<br />
-                        Description:<br />
-                        @experience.Description<br />
-                    </p>
+                            <p>
+                                Work Experience Id: @experience.Id <br />
+                                <b>Titel: @experience.Titel </b><br />
+                                From @experience.FromDate to @experience.EndDate<br />
+                                Description:<br />
+                                @experience.Description<br />
+                            </p>
                         }
                     }
                 </td>
