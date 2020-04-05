@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,10 +41,11 @@ namespace Forward
                 //client.BaseAddress = new Uri("https://localhost:44378/");
             });
             services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; }); //Added the option for detailed info delivered to the browser.
-            // This is the place to add HTTP client services or other services needed.
+            
+            // This one is needed to acces the cookie information from other pages where the service is injected.
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme) //Adding default authentication
-                .AddCookie();  
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();  //Adding default authentication
 
         }
 

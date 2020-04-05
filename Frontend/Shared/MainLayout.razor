@@ -6,8 +6,14 @@
 
 <div class="main">
     <div class="top-row px-4">
-        <a href="Login" class="btn btn-primary btn-sm">Log in</a>
-        <a href="Logout" class="btn btn-primary btn-sm">Log out</a>
+        <AuthorizeView>
+            <Authorized>
+                <a href="Logout" class="btn btn-primary btn-sm">Log out (@context.User.Claims.FirstOrDefault(u=>u.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value)</a> 
+            </Authorized>
+            <NotAuthorized>
+                <a href="Login" class="btn btn-primary btn-sm">Log in</a>
+            </NotAuthorized>
+        </AuthorizeView>
     </div>
 
     <div class="container-fluid">

@@ -6,18 +6,22 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Core;
+using Microsoft.AspNetCore.Http;
 
 namespace Forward.Services
 {
     public class JobService : IJobService
     {
-        public readonly HttpClient _httpClient;
+        private readonly HttpClient _httpClient;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
         readonly JsonSerializerOptions options = new JsonSerializerOptions {
             PropertyNameCaseInsensitive = true
         };
 
-        public JobService(HttpClient httpClient) {
-            _httpClient = httpClient;
+        public JobService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor) {
+            _httpClient = httpClient ?? throw new System.ArgumentNullException(nameof(httpClient));
+            _httpContextAccessor = httpContextAccessor ?? throw new System.ArgumentNullException(nameof(httpContextAccessor));
         }
 
         public async Task<Job> AddJob(Job job) {
