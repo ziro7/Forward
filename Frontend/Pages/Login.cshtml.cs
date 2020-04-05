@@ -24,7 +24,7 @@ namespace Forward
         public async Task<IActionResult> OnPostAsync() {
 
             // To do - add some library - maybe with hashing of passwords?
-            if(!(Email=="upperi@hotmail.com" && Password == "password")) {
+            if(!(Email=="upperiq@hotmail.com" && Password == "password")) {
                 return Page();
             }
 
