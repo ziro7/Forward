@@ -31,7 +31,8 @@ Blazor frontend:
 - Formvalidation - Using Blazor's build in formvalidation in the AddJobDialog component as it only create a "job" without a job function.
 - Complex form validation - Extending the built in functionality to enable validation of the nested class structure in EditCV page, as it handles both job and experiences.
 - Bootstrap - Too make the page better looking I have added some bootstrap code, aswell as some css, and load some icons etc.
-- Login funktionality - WORK IN PROGRESS - Currently you can only log in and a cookie is saved. username upperiq@hotmail.com and password is "password".
+- Login funktionality - The user upperiq@hotmail.com with password "password" can now log in and a cookie is stored on the client. When logging out the cookie is removed. The user will only see authorized content.
+- Blocking pages from unathorized users (when setting the url to the subpages.)
 
 Core - Class library:
 - Custom data validation - Added a custom validation so the beginning job date can't be before I was born - Se StartDateValidator. This validation still uses Blazors validation engine.
@@ -41,7 +42,8 @@ CoreTest - Unit test library:
 - Unittests - TODO : Need to update
 
 ToDo: 
-- Add Authorization - both blazor and api. (bearer token maybe)
+- Add Authorization to api. (bearer token maybe)
+- Look into asp.net identity
 - Add integration test and test on API controller. xUnit - Moq
 - Add tips and tricks items
 - microservices and container
