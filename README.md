@@ -12,6 +12,7 @@ The data model is fairly simple and only consist of two classes - a "job" which 
 To run the solution
 1. Download/Clone the solution
 2. Go to the Console and type "dotnet ef migrations add Initial"
+2.1 also type "dotnet ef migrations add CreateIdentitySchema" (Identity database)
 3. In the same console run "dotnet ef database update"
 (still need to test if this works or something else is needed.)
 
