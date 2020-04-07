@@ -8,10 +8,12 @@
     <div class="top-row px-4">
         <AuthorizeView>
             <Authorized>
-                <a href="Logout" class="btn btn-primary btn-sm">Log out (@context.User.Claims.FirstOrDefault(u=>u.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value)</a> 
+                    <a href="/identity/account/logout" class="btn btn-primary btn-sm">
+                        Log out (@context.User.Claims.FirstOrDefault(u => u.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value
+                    </a>
             </Authorized>
             <NotAuthorized>
-                <a href="Login" class="btn btn-primary btn-sm">Log in</a>
+                <a href="/identity/account/login" class="btn btn-primary btn-sm">Log in</a>
             </NotAuthorized>
         </AuthorizeView>
     </div>

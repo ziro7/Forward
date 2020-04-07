@@ -45,7 +45,7 @@ namespace Forward
             // This one is needed to acces the cookie information from other pages where the service is injected.
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();  //Adding default authentication
+            services.AddAuthentication("Identity.Application").AddCookie();  //Using ASP.Net Identity cookie
 
         }
 

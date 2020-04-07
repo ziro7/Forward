@@ -98,3 +98,13 @@ C:\Users\JBKD\source\repos\Forward\Core.Tests\obj\Debug\netcoreapp3.1\Core.Tests
 C:\Users\JBKD\source\repos\Forward\Core.Tests\obj\Debug\netcoreapp3.1\Core.Tests.csproj.CopyComplete
 C:\Users\JBKD\source\repos\Forward\Core.Tests\obj\Debug\netcoreapp3.1\Core.Tests.dll
 C:\Users\JBKD\source\repos\Forward\Core.Tests\obj\Debug\netcoreapp3.1\Core.Tests.pdb
+C:\Users\JBKD\source\repos\Forward\Core.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authorization.dll
+C:\Users\JBKD\source\repos\Forward\Core.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Blazor.DataAnnotations.Validation.dll
+C:\Users\JBKD\source\repos\Forward\Core.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.dll
+C:\Users\JBKD\source\repos\Forward\Core.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\JBKD\source\repos\Forward\Core.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Metadata.dll
+C:\Users\JBKD\source\repos\Forward\Core.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\JBKD\source\repos\Forward\Core.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\JBKD\source\repos\Forward\Core.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\JBKD\source\repos\Forward\Core.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\JBKD\source\repos\Forward\Core.Tests\bin\Debug\netcoreapp3.1\Microsoft.JSInterop.dll

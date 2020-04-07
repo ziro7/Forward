@@ -1,11 +1,20 @@
 ﻿<CascadingAuthenticationState>
     <Router AppAssembly="@typeof(Program).Assembly">
         <Found Context="routeData">
-            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" >
+                <NotAuthorized>
+                    <h2>NOT AUTHORIZED</h2>
+                    <p>You are trying to acces a page you don't have authorization to open.</p>
+                    <br />
+                    <p>Try Logging in by pressing the log in button on top right.</p>
+                </NotAuthorized>
+            </AuthorizeRouteView>
         </Found>
         <NotFound>
             <LayoutView Layout="@typeof(MainLayout)">
                 <p>Sorry, there's nothing at this address.</p>
+                <br />
+                <p>Did you miss type something?</p>
             </LayoutView>
         </NotFound>
     </Router>
