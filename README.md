@@ -31,7 +31,7 @@ Blazor frontend:
 - Formvalidation - Using Blazor's build in formvalidation in the AddJobDialog component as it only create a "job" without a job function.
 - Complex form validation - Extending the built in functionality to enable validation of the nested class structure in EditCV page, as it handles both job and experiences.
 - Bootstrap - Too make the page better looking I have added some bootstrap code, aswell as some css, and load some icons etc.
-- Login funktionality - The user upperiq@hotmail.com with password "password" can now log in and a cookie is stored on the client. When logging out the cookie is removed. The user will only see authorized content.
+- Login funktionality - Using ASP.Net Identity cookie funktionality to add a cookie when logging in. When logging out the cookie is removed. The user will only see authorized content.
 - Blocking pages from unathorized users (when setting the url to the subpages.)
 
 Core - Class library:
