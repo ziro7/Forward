@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ForwardBackend.Models;
 using Core;
-using Microsoft.AspNet.OData;
 using Microsoft.Extensions.Logging;
 using System.Resources;
 using System.Reflection;
@@ -18,6 +17,7 @@ namespace ForwardBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class JobsController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -30,7 +30,6 @@ namespace ForwardBackend.Controllers
         }
 
         // GET: api/Jobs
-        [Authorize]
         [HttpGet]
         //[EnableQuery()]
         public async Task<ActionResult<IEnumerable<Job>>> GetJobs()
@@ -50,7 +49,6 @@ namespace ForwardBackend.Controllers
         }
 
         // GET: api/Jobs/5
-        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Job>> GetJob(int id)
         {
@@ -73,7 +71,6 @@ namespace ForwardBackend.Controllers
         // PUT: api/Jobs/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
-        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutJob(int id, Job job)
         {
@@ -107,7 +104,6 @@ namespace ForwardBackend.Controllers
         // POST: api/Jobs
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
-        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Job>> PostJob(Job job)
         {
@@ -119,7 +115,6 @@ namespace ForwardBackend.Controllers
         }
 
         // DELETE: api/Jobs/5
-        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Job>> DeleteJob(int id)
         {

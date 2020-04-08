@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Core;
+using Forward.Services.Tokens;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Identity.Client;
 
 namespace Forward.Services
 {
@@ -14,8 +17,8 @@ namespace Forward.Services
     {
         private readonly HttpClient _httpClient;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
-        readonly JsonSerializerOptions options = new JsonSerializerOptions {
+        private AuthenticationResult _authResult;
+        private readonly JsonSerializerOptions _options = new JsonSerializerOptions {
             PropertyNameCaseInsensitive = true
         };
 
@@ -25,62 +28,89 @@ namespace Forward.Services
         }
 
         public async Task<Job> AddJob(Job job) {
-            var jobJson = new StringContent(JsonSerializer.Serialize(job), Encoding.UTF8, "application/json");
+            await GetAccessTokenIfNotKnow();
 
-            var response = await _httpClient.PostAsync("api/jobs", jobJson);
+            if (!string.IsNullOrEmpty(_authResult.AccessToken)) {
+                AddBearerTokenToRequestHeader(_authResult);
 
-            if (response.IsSuccessStatusCode) {
-                return await JsonSerializer.DeserializeAsync<Job>(await response.Content.ReadAsStreamAsync());
+                var jobJson = new StringContent(JsonSerializer.Serialize(job), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("api/jobs", jobJson);
+
+                if (response.IsSuccessStatusCode) {
+                    return await JsonSerializer.DeserializeAsync<Job>(await response.Content.ReadAsStreamAsync());
+                }
+                return null;
+            } else {
+                return null;
             }
-            return null;
+        }
+
+        private async Task GetAccessTokenIfNotKnow() {
+            if (_authResult == null) { 
+                _authResult = await AccessTokenForwardBackend.GetAccessToken(); 
+            }
+        }
+
+        private void AddBearerTokenToRequestHeader(AuthenticationResult authResult) {
+            var defaultRequestHeaders = _httpClient.DefaultRequestHeaders;
+
+            if (defaultRequestHeaders.Accept == null || !defaultRequestHeaders.Accept.Any(m => m.MediaType == "application/json")) {
+                _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }
+
+            defaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", authResult.AccessToken);
         }
 
         public async Task DeleteJob(int jobId) {
-            await _httpClient.DeleteAsync($"api/jobs/{jobId}");
+            await GetAccessTokenIfNotKnow();
+
+            if (!string.IsNullOrEmpty(_authResult.AccessToken)) {
+                AddBearerTokenToRequestHeader(_authResult);
+
+                await _httpClient.DeleteAsync($"api/jobs/{jobId}");
+            } 
         }
 
         public async Task<Job[]> GetAllJobs() {
+            await GetAccessTokenIfNotKnow();
+            if (!string.IsNullOrEmpty(_authResult.AccessToken)) {
+                AddBearerTokenToRequestHeader(_authResult);
 
-            List<Job> jobs = new List<Job>();
-            await Task.Delay(2000);
-            
-            var jobsFromJson = await JsonSerializer.DeserializeAsync<IEnumerable<Job>>(
-                //await _httpClient.GetStreamAsync($"api/jobs?$OrderBy=StartDate"), options); //Using OData functionality to order data.
-                await _httpClient.GetStreamAsync($"api/jobs"), options); 
+                var jobsFromJson = await JsonSerializer.DeserializeAsync<IEnumerable<Job>>(
+                //await _httpClient.GetStreamAsync($"api/jobs?$OrderBy=StartDate"), options); //Using OData functionality to order data. -> not supported in 3.0 yet
+                await _httpClient.GetStreamAsync($"api/jobs"), _options);
 
-            foreach (var job in jobsFromJson) {
-                List<WorkExperience> workExperience = job.WorkExperiences;
-                var startDate = job.StartDate;
-                var endDate = job.EndDate;
-                var id = job.JobId;
-                var companyName = job.CompanyName;
-                Job newJob = new Job { JobId = id, CompanyName = companyName, StartDate = startDate, EndDate = endDate, WorkExperiences = workExperience };
-                jobs.Add(newJob);
+                return jobsFromJson.ToArray();
+
             }
 
-            return jobs.ToArray();
+            return null;
         }
 
         public async Task<Job> GetJob(int jobId) {
 
-            var result =  await JsonSerializer.DeserializeAsync<Job>
-                (await _httpClient.GetStreamAsync($"api/jobs/{jobId}"), options);
+            await GetAccessTokenIfNotKnow();
+            if (!string.IsNullOrEmpty(_authResult.AccessToken)) {
+                AddBearerTokenToRequestHeader(_authResult);
 
-            List<WorkExperience> workExperience = result.WorkExperiences;
-            var startDate = result.StartDate;
-            var endDate = result.EndDate;
-            var id = result.JobId;
-            var companyName = result.CompanyName;
-            Job jobInFocus = new Job { JobId = id, CompanyName = companyName, StartDate = startDate, EndDate = endDate, WorkExperiences = workExperience };
+                var result = await JsonSerializer.DeserializeAsync<Job>
+                (await _httpClient.GetStreamAsync($"api/jobs/{jobId}"), _options);
 
-            return jobInFocus;
+                return result;
+            }
+            return null;
         }
 
         public async Task UpdateJob(Job job) {
-            var jobJson =
-            new StringContent(JsonSerializer.Serialize(job), Encoding.UTF8, "application/json");
-            int jobId = job.JobId;
-            await _httpClient.PutAsync($"api/jobs/{jobId}", jobJson);
+            await GetAccessTokenIfNotKnow();
+            if (!string.IsNullOrEmpty(_authResult.AccessToken)) {
+                AddBearerTokenToRequestHeader(_authResult);
+
+                var jobJson =
+                new StringContent(JsonSerializer.Serialize(job), Encoding.UTF8, "application/json");
+                int jobId = job.JobId;
+                await _httpClient.PutAsync($"api/jobs/{jobId}", jobJson);
+            }
         }
     }
 }

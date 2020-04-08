@@ -13,6 +13,7 @@ namespace ForwardBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class WorkExperiencesController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -23,7 +24,6 @@ namespace ForwardBackend.Controllers
         }
 
         // GET: api/WorkExperiences
-        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<WorkExperience>>> GetWorkExperiences()
         {
@@ -31,7 +31,6 @@ namespace ForwardBackend.Controllers
         }
 
         // GET: api/WorkExperiences/5
-        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<WorkExperience>> GetWorkExperience(int id)
         {
@@ -48,7 +47,6 @@ namespace ForwardBackend.Controllers
         // PUT: api/WorkExperiences/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
-        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutWorkExperience(int id, WorkExperience workExperience)
         {
@@ -81,7 +79,6 @@ namespace ForwardBackend.Controllers
         // POST: api/WorkExperiences
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
-        [Authorize]
         [HttpPost]
         public async Task<ActionResult<WorkExperience>> PostWorkExperience(WorkExperience workExperience)
         {
@@ -96,7 +93,6 @@ namespace ForwardBackend.Controllers
         }
 
         // DELETE: api/WorkExperiences/5
-        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<WorkExperience>> DeleteWorkExperience(int id)
         {
