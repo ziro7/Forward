@@ -15,7 +15,7 @@ namespace Core
         [StringLength(100, ErrorMessage ="Company name is too long")]
         public string CompanyName { get; set; }
         [Required]
-        [StartDateValidator(myBirthday = "12-10-1982")]
+        [StartDateValidator(MyBirthday = "12-10-1982")]
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         [ValidateComplexType]

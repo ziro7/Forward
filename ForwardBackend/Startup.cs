@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace ForwardBackend
 {
@@ -30,6 +31,11 @@ namespace ForwardBackend
 
             // Registers that the DB Context uses a SQL Server and the connection string to the DB is the default defined in the appsettings.json file.
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
+                options.Audience = Configuration["AzureActiveDirective:ResourceId"]; // This Api is the audience for the token.
+                options.Authority = $"{Configuration["AzureActiveDirective:InstanceId"]}{Configuration["AzureActiveDirective:TenantId"]}"; // Setting Azure Active Directive as the authority who can create tokens.
+            });
 
             services.AddControllers();
 
@@ -75,15 +81,15 @@ namespace ForwardBackend
             });
 
             //app.UseHttpsRedirection(); //Might be needed at some point?
-            app.UseStaticFiles(); // Enables static files (search in www. files) - might not be needed in api
+            //app.UseStaticFiles(); // Enables static files (search in www. files) - might not be needed in api
             //app.UseCookiePolicy(); // TODO look into cookies
 
             app.UseRouting();
             // app.UseRequestLocalization(); // TODO look into it later
             // app.UseCors(); // TODO look into it later
 
-            //app.UseAuthentication(); //TODO Add later
-            //app.UseAuthorization(); //TODO add later
+            app.UseAuthentication(); 
+            app.UseAuthorization(); 
             //app.UseSession(); //TODO look into it later
 
             app.UseStatusCodePages(); // adds the status code 200 etc.

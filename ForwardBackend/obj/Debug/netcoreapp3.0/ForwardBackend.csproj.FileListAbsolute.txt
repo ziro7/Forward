@@ -157,8 +157,6 @@ C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Micros
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Authorization.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Blazor.DataAnnotations.Validation.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Components.dll
@@ -167,3 +165,12 @@ C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Micros
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.JSInterop.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\System.Text.Encodings.Web.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\System.Text.Json.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\bin\Debug\netcoreapp3.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\JBKD\source\repos\Forward\ForwardBackend\obj\Debug\netcoreapp3.0\ForwardBackend.MvcApplicationPartsAssemblyInfo.cache
