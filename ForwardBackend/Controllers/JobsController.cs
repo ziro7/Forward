@@ -77,7 +77,7 @@ namespace ForwardBackend.Controllers
             _logger.LogInformation(LoggingEvents.InsertItem, "Putjob {Id}", id);
             if (job == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("The job with id: " + id + " is null");
             }
 
             _context.Entry(job).State = EntityState.Modified;
@@ -107,6 +107,10 @@ namespace ForwardBackend.Controllers
         [HttpPost]
         public async Task<ActionResult<Job>> PostJob(Job job)
         {
+            if (job is null) {
+                throw new ArgumentNullException(nameof(job));
+            }
+
             _logger.LogInformation(LoggingEvents.UpdateItem, "PostJob from company {0}", job.CompanyName);
             _context.Jobs.Add(job);
             await _context.SaveChangesAsync();

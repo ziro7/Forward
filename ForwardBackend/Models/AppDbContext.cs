@@ -17,6 +17,10 @@ namespace ForwardBackend.Models
         }
 
         protected override void OnModelCreating (ModelBuilder modelBuilder) {
+            if (modelBuilder is null) {
+                throw new ArgumentNullException(nameof(modelBuilder));
+            }
+
             modelBuilder.Entity<WorkExperience>().HasOne(w => w.Job).WithMany(j => j.WorkExperiences).HasForeignKey(w => w.JobForeignKey);
         }
     }

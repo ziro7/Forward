@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ForwardBackend.Models
 {
-    public class LoggingEvents
+    public static class LoggingEvents
     {
         // Taking from https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-event-id 
         public const int GenerateItems = 1000;

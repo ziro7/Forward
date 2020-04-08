@@ -55,7 +55,7 @@ namespace ForwardBackend
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger) {
+        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger) {
 
             // Middleware component
             /*The request handling pipeline is composed as a series of middleware components. 

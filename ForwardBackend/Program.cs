@@ -25,8 +25,8 @@ namespace ForwardBackend
                 try {
                     var context = services.GetRequiredService<AppDbContext>();
                     DBInitializer.Seed(context);
-                    logger.LogInformation("Seeding database");  
-                } catch (Exception ex){
+                    logger.LogInformation("Seeding database if empty");  
+                } catch (InvalidOperationException ex){
                     logger.LogWarning(LoggingEvents.SystemEvent, ex, "An error occurred getting the context.");
                 }
             }

@@ -7,6 +7,10 @@ namespace ForwardBackend.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            if (migrationBuilder is null) {
+                throw new ArgumentNullException(nameof(migrationBuilder));
+            }
+
             migrationBuilder.DropTable(
                 name: "WorkExperience");
 
@@ -41,6 +45,10 @@ namespace ForwardBackend.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            if (migrationBuilder is null) {
+                throw new ArgumentNullException(nameof(migrationBuilder));
+            }
+
             migrationBuilder.DropTable(
                 name: "WorkExperiences");
 
