@@ -14,8 +14,6 @@ namespace Forward.Pages
     {
         [Inject]
         public IJobService JobService { get; set; }
-        [Inject]
-        public IWorkExperienceService WorkExperienceService { get; set; }
 
         protected AddJobDialogBase AddJobDialog{ get; set; }
         public Job[] Jobs { get; set; }

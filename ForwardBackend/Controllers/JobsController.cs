@@ -98,7 +98,7 @@ namespace ForwardBackend.Controllers
             // It is allready being tracked so i detach it.
             _context.Entry(jobInDb).State = EntityState.Detached;
 
-            foreach (var experience in job.WorkExperiences) {
+            foreach (var experience in jobInDb.WorkExperiences) {
                 var workxp = await _context.WorkExperiences
                     .AsNoTracking()
                     .FirstOrDefaultAsync(w => w.JobForeignKey == job.JobId)
@@ -108,9 +108,15 @@ namespace ForwardBackend.Controllers
 
             //Modifing the items i need to update
             try {
-                foreach (var workxp in job.WorkExperiences) {
+                // current experiences in db
+                foreach (var workxp in jobInDb.WorkExperiences) {
                     _context.Entry(workxp).State = EntityState.Modified;
-                }               
+                }
+                // new added experiences
+                if (job.WorkExperiences.Count > jobInDb.WorkExperiences.Count) {
+                    _context.WorkExperiences.Add(job.WorkExperiences[job.WorkExperiences.Count - 1]);
+                }
+                // data on the job it self
                 _context.Entry(job).State = EntityState.Modified;
             } catch (InvalidOperationException ex) {
                 Console.WriteLine(ex.StackTrace);
@@ -126,7 +132,6 @@ namespace ForwardBackend.Controllers
                     throw;
                 }
             }
-
             return NoContent();
         }
 

@@ -14,8 +14,6 @@ namespace Forward.Shared
         [Inject]
         public IJobService JobService { get; set; }
         [Inject]
-        public IWorkExperienceService WorkExperienceService { get; set; }
-        [Inject]
         public NavigationManager NavigationManager { get; set; }
         [Parameter]
         public string JobId { get; set; }
@@ -25,9 +23,11 @@ namespace Forward.Shared
         protected string Message = string.Empty;
         protected string StatusClass = string.Empty;
         protected bool IsSaved;
+        protected bool SubmitPressed;
 
         protected override async Task OnInitializedAsync() {
             IsSaved = false;
+            SubmitPressed = false;
             int.TryParse(JobId, out int jobId);
 
             if (jobId == 0) {
@@ -50,33 +50,28 @@ namespace Forward.Shared
 
         protected async Task HandleValidSubmit() {
 
-            if (Job.IsValid()) {
-                if (Job.JobId == 0) {
-                    var newJob = await JobService.AddJob(Job);
-                    if (newJob != null) {
-                        StatusClass = "alert-success";
-                        Message = "New Job Added successfully.";
-                        IsSaved = true;
-                    } else {
-                        StatusClass = "alert-danger";
-                        Message = "Something went wrong adding the new Job. Please try again.";
-                        IsSaved = false;
-                    }
-
-                } else {
-                    await JobService.UpdateJob(Job);
-                    StatusClass = "alert-succes";
-                    Message = "Job updated succesfully.";
+            if (Job.JobId == 0) {
+                var newJob = await JobService.AddJob(Job);
+                if (newJob != null) {
+                    StatusClass = "alert-success";
+                    Message = "New Job Added successfully.";
                     IsSaved = true;
-                    foreach (var experiences in Job.WorkExperiences) {
-                        await WorkExperienceService.UpdateWorkExperience(experiences);
-                    }
+                } else {
+                    StatusClass = "alert-danger";
+                    Message = "Something went wrong adding the new Job. Please try again.";
+                    IsSaved = false;
                 }
-            } else {
-                StatusClass = "alert-danger";
-                Message = "Job is not valid";
-                IsSaved = false;
+
+            } else if (SubmitPressed){
+                await JobService.UpdateJob(Job);
+                StatusClass = "alert-succes";
+                Message = "Job updated succesfully.";
+                IsSaved = true;
             }
+        }
+
+        protected void SaveJob() {
+            SubmitPressed = true;
         }
 
         protected async Task DeleteJob() {
@@ -90,14 +85,18 @@ namespace Forward.Shared
             NavigationManager.NavigateTo("/WhoAmI");
         }
         protected async Task AddWorkExperience() {
-            var newWorkExperience = new WorkExperience() {Titel="Titel", Job=Job, JobForeignKey=Job.JobId };
-            await WorkExperienceService.AddWorkExperience(newWorkExperience);
-            Job.WorkExperiences.Add(newWorkExperience); 
+            var newWorkExperience = new WorkExperience() {Titel="Titel", FromDate=Job.StartDate, EndDate=Job.EndDate, Description="What was the job function?", Job=Job, JobForeignKey=Job.JobId };
+            Job.WorkExperiences.Add(newWorkExperience);
+            await JobService.UpdateJob(Job);
+            StatusClass = "alert-succes";
+            Message = "Workexperience added to job.";
         }
 
         protected async Task DeleteWorkExperience(WorkExperience experience) {
             Job.WorkExperiences.Remove(Job.WorkExperiences.Find(w => w.Id == experience.Id));
-            await WorkExperienceService.DeleteWorkExperience(experience.Id);
+            await JobService.UpdateJob(Job);
+            StatusClass = "alert-succes";
+            Message = "Workexperience deleted from job.";
         }
 
     }

@@ -65,10 +65,10 @@
             @if (Message != string.Empty && IsSaved == false) {
                 <div class="alert @StatusClass">@Message</div>
             }
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary" @onclick="@SaveJob">Save</button>
         </EditForm>
         } else {
-            //Bootstrap code where the alert box is based on the status class.
+            //Bootstrap code where the alert is based on the status class.
             <div class="alert @StatusClass">@Message</div>
             <a class="btn btn-primary" @onclick="@NavigationToOverview">Back to Who Am I</a>
         }

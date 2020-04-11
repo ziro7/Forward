@@ -16,5 +16,11 @@ namespace ForwardBackend.Models
         public DateTime EndDate { get; set; }
         public List<WorkExperience> WorkExperiences { get; set; }
 
+        /*
+         * Why is this here and not the Core model? - Well apperently the ValidateComplexTypeAttribute used in the blazor 
+         * validation causes a "System.InvalidOperationException: ValidateComplexTypeAttribute can only used with ObjectGraphDataAnnotationsValidator." 
+         * if used in the API part - so had to seperate them and remote the attribute.
+         * https://github.com/dotnet/aspnetcore/issues/17316
+         */
     }
 }
