@@ -80,10 +80,9 @@ namespace Forward.Services
                 //await _httpClient.GetStreamAsync($"api/jobs?$OrderBy=StartDate"), options); //Using OData functionality to order data. -> not supported in 3.0 yet
                 await _httpClient.GetStreamAsync($"api/jobs"), _options);
 
-                return jobsFromJson.ToArray();
-
+                var jobsOrderedByDateInArray = jobsFromJson.OrderByDescending(j=>j.StartDate);
+                return jobsOrderedByDateInArray.ToArray();
             }
-
             return null;
         }
 
@@ -106,10 +105,9 @@ namespace Forward.Services
             if (!string.IsNullOrEmpty(_authResult.AccessToken)) {
                 AddBearerTokenToRequestHeader(_authResult);
 
-                var jobJson =
-                new StringContent(JsonSerializer.Serialize(job), Encoding.UTF8, "application/json");
+                var jobJson = new StringContent(JsonSerializer.Serialize(job), Encoding.UTF8, "application/json");
                 int jobId = job.JobId;
-                await _httpClient.PutAsync($"api/jobs/{jobId}", jobJson);
+                var response = await _httpClient.PutAsync($"api/jobs/{jobId}", jobJson);
             }
         }
     }

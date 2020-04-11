@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace ForwardBackend.Models

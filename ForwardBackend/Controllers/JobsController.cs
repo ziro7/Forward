@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ForwardBackend.Models;
-using Core;
 using Microsoft.Extensions.Logging;
 using System.Resources;
 using System.Reflection;
@@ -57,7 +56,7 @@ namespace ForwardBackend.Controllers
                 .Include(j => j.WorkExperiences)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(j => j.JobId == id)
-                .ConfigureAwait(true);
+                .ConfigureAwait(false);
 
             if (job == null)
             {
@@ -80,20 +79,50 @@ namespace ForwardBackend.Controllers
                 throw new ArgumentNullException("The job with id: " + id + " is null");
             }
 
-            _context.Entry(job).State = EntityState.Modified;
+            /*
+             Had some issue with updating the list of workexperiences, as the job seemed to be tracked without the link to workexperiences.
+             If i tried saving it, it failed with "The instance of entity type cannot be tracked because another instance of this type with 
+             the same key is already being tracked".
+             I decided to do an approach where i find the job and work experiences and detach it from tracking.
+             Then set the specified ones i need to modified.
+             And lastly save the changes.
+             */
 
-            try
-            {
-                await _context.SaveChangesAsync();
+            // Getting the job to update from database
+            var jobInDb = await _context.Jobs
+              .Include(j => j.WorkExperiences)
+              .AsNoTracking()
+              .FirstOrDefaultAsync(j => j.JobId == id)
+              .ConfigureAwait(false);
+
+            // It is allready being tracked so i detach it.
+            _context.Entry(jobInDb).State = EntityState.Detached;
+
+            foreach (var experience in job.WorkExperiences) {
+                var workxp = await _context.WorkExperiences
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(w => w.JobForeignKey == job.JobId)
+                    .ConfigureAwait(false);
+                _context.Entry(workxp).State = EntityState.Detached;
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!JobExists(id))
-                {
+
+            //Modifing the items i need to update
+            try {
+                foreach (var workxp in job.WorkExperiences) {
+                    _context.Entry(workxp).State = EntityState.Modified;
+                }               
+                _context.Entry(job).State = EntityState.Modified;
+            } catch (InvalidOperationException ex) {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            // Save
+            try {
+                await _context.SaveChangesAsync().ConfigureAwait(false);
+            } catch (DbUpdateConcurrencyException) {
+                if (!JobExists(id)) {
                     return NotFound();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }
@@ -113,7 +142,7 @@ namespace ForwardBackend.Controllers
 
             _logger.LogInformation(LoggingEvents.UpdateItem, "PostJob from company {0}", job.CompanyName);
             _context.Jobs.Add(job);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
 
             return CreatedAtAction("GetJob", new { id = job.JobId }, job);
         }
@@ -130,7 +159,7 @@ namespace ForwardBackend.Controllers
             }
 
             _context.Jobs.Remove(job);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
 
             return job;
         }

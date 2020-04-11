@@ -32,8 +32,8 @@ namespace ForwardBackend
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
-                options.Audience = Configuration["AzureActiveDirective:ResourceId"]; // This Api is the audience for the token.
-                options.Authority = $"{Configuration["AzureActiveDirective:InstanceId"]}{Configuration["AzureActiveDirective:TenantId"]}"; // Setting Azure Active Directive as the authority who can create tokens.
+                options.Audience = Configuration["AzureActiveDirectory:ResourceId"]; // This Api is the audience for the token.
+                options.Authority = $"{Configuration["AzureActiveDirectory:InstanceId"]}{Configuration["AzureActiveDirectory:TenantId"]}"; // Setting Azure Active Directive as the authority who can create tokens.
             });
 
             services.AddControllers();

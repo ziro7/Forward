@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Core;
 using ForwardBackend.Models;
 using Microsoft.AspNetCore.Authorization;
 

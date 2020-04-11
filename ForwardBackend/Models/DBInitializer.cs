@@ -49,7 +49,7 @@ namespace ForwardBackend.Models
                     };
                     var workExperience5 = new WorkExperience {
                         Titel = "Tester & Bussines Analyst",
-                        Description = "Pensionsprojektet (LPD) skulle videreudvikles og laves til et licensbaseret system. Kravspecifikation, løsningsbeskrivelse og mock - ups. </b>Testcasedesign manuel og til integrationstest(CQ lag), Review af testcases og Testeksekvering.</b>Eksplorativ test baseret på test charters og checklists. </b>Defectrapportering samt gentest, Regressionstest(manuel og enkelte via Selenium Webdriver(java)). </b>Anvendelse af Jira og Testrail.",
+                        Description = "Pensionsprojektet (LPD) skulle videreudvikles og laves til et licensbaseret system. Kravspecifikation, løsningsbeskrivelse og mock - ups. Testcasedesign manuel og til integrationstest(CQ lag), Review af testcases og Testeksekvering. Eksplorativ test baseret på test charters og checklists. Defectrapportering samt gentest, Regressionstest(manuel og enkelte via Selenium Webdriver(java)). Anvendelse af Jira og Testrail.",
                         FromDate = new DateTime(2018, 12, 01),
                         EndDate = new DateTime(2020, 12, 01),
                         JobForeignKey = job3.JobId
