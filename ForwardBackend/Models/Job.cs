@@ -14,7 +14,7 @@ namespace ForwardBackend.Models
         public string CompanyName { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public List<WorkExperience> WorkExperiences { get; set; }
+        public List<WorkExperience> WorkExperiences { get; }
 
         /*
          * Why is this here and not the Core model? - Well apperently the ValidateComplexTypeAttribute used in the blazor 

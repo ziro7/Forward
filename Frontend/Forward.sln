@@ -14,7 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Tests", "..\Core.Tests\Core.Tests.csproj", "{DFBCDB44-855E-4E32-AA11-EA22C6C7665E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Tests", "..\Core.Tests\Core.Tests.csproj", "{DFBCDB44-855E-4E32-AA11-EA22C6C7665E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForwardBackend.IntegrationTests", "..\ForwardBackend.IntegrationTests\ForwardBackend.IntegrationTests.csproj", "{3B819B8E-4073-4678-9095-AC674BBF9D89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{DFBCDB44-855E-4E32-AA11-EA22C6C7665E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFBCDB44-855E-4E32-AA11-EA22C6C7665E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFBCDB44-855E-4E32-AA11-EA22C6C7665E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B819B8E-4073-4678-9095-AC674BBF9D89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B819B8E-4073-4678-9095-AC674BBF9D89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B819B8E-4073-4678-9095-AC674BBF9D89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B819B8E-4073-4678-9095-AC674BBF9D89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

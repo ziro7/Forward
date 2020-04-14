@@ -16,7 +16,7 @@ namespace Forward.Services
     public class JobService : IJobService
     {
         private readonly HttpClient _httpClient;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IHttpContextAccessor _httpContextAccessor; // TODO to access data from cookie like name
         private AuthenticationResult _authResult;
         private readonly JsonSerializerOptions _options = new JsonSerializerOptions {
             PropertyNameCaseInsensitive = true
@@ -47,7 +47,7 @@ namespace Forward.Services
 
         private async Task GetAccessTokenIfNotKnow() {
             if (_authResult == null) { 
-                _authResult = await AccessTokenForwardBackend.GetAccessToken(); 
+                _authResult = await AccessTokenForwardBackend.GetAuthenticationResult(); 
             }
         }
 
@@ -107,7 +107,7 @@ namespace Forward.Services
 
                 var jobJson = new StringContent(JsonSerializer.Serialize(job), Encoding.UTF8, "application/json");
                 int jobId = job.JobId;
-                var response = await _httpClient.PutAsync($"api/jobs/{jobId}", jobJson);
+                await _httpClient.PutAsync($"api/jobs/{jobId}", jobJson);
             }
         }
     }

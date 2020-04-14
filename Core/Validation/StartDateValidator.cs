@@ -14,9 +14,8 @@ namespace Core.Validation
 
             // The CLR don't accept datetime so have to get a string as validation paramater and change it.
             DateTime myBirthdayInDateTime = DateTime.ParseExact(MyBirthday,"dd-mm-yyyy", CultureInfo.InvariantCulture);
-            DateTime startDate;
 
-            if(DateTime.TryParse(value.ToString(),out startDate)) {
+            if (DateTime.TryParse(value.ToString(), out DateTime startDate)) {
 
                 if (startDate > myBirthdayInDateTime) {
                     return null; // Validation is ok.

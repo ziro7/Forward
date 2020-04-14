@@ -8,7 +8,7 @@ namespace Forward.Services.Tokens
 {
     public static class AccessTokenForwardBackend
     {
-        public static async Task<AuthenticationResult> GetAccessToken() {
+        public static async Task<AuthenticationResult> GetAuthenticationResult() {
             // Bad practices to store these data in appsettings - should be in a keyvault or some other secret place.
             // As this is just practise i allow it to be stored there for the time being.
             // Use AuthConfig class to create my authorization configuration.
@@ -16,9 +16,11 @@ namespace Forward.Services.Tokens
 
             // The IConfidentialClientApplication is used to create an application with the configuration we just set up.
             // When the app is build, it can be used to aquire a token.
-            IConfidentialClientApplication app;
+            return await GetAccessToken(config);
+        }
 
-            app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
+        private static async Task<AuthenticationResult> GetAccessToken(AuthConfig config) {
+            IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                 .WithClientSecret(config.ClientSecret)
                 .WithAuthority(new Uri(config.Authority))
                 .Build();
