@@ -58,10 +58,10 @@ namespace ForwardBackend.IntegrationTests
             return null;
         }
 
-        protected async Task DeleteJobInDatabase(int jobId, StringContent jobJson) {
+        protected async Task DeleteJobInDatabase(int jobId) {
 
             await Authenticate();
-            await _httpClient.PutAsync($"api/jobs/{jobId}", jobJson);
+            await _httpClient.DeleteAsync($"api/jobs/{jobId}");
         }
     }
 }

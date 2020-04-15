@@ -67,8 +67,7 @@ namespace ForwardBackend.IntegrationTests
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
             // Cleanup
-            var jobJson = new StringContent(JsonSerializer.Serialize(newJob), Encoding.UTF8, "application/json");
-            await DeleteJobInDatabase(newJob.JobId, jobJson);
+            await DeleteJobInDatabase(newJob.JobId);
         }
 
         [Fact]
@@ -90,8 +89,7 @@ namespace ForwardBackend.IntegrationTests
             result.CompanyName.Should().Be("SimCorp");
 
             // Cleanup
-            var jobJson = new StringContent(JsonSerializer.Serialize(newJob), Encoding.UTF8, "application/json");
-            await DeleteJobInDatabase(newJob.JobId, jobJson);
+            await DeleteJobInDatabase(newJob.JobId);
         }
 
         [Fact]
@@ -109,7 +107,7 @@ namespace ForwardBackend.IntegrationTests
             response.StatusCode.Should().Be(HttpStatusCode.Created);
 
             // Cleanup
-            await DeleteJobInDatabase(newJob.JobId, jobJson);
+            await DeleteJobInDatabase(newJob.JobId);
         }
 
         [Fact]
@@ -129,9 +127,8 @@ namespace ForwardBackend.IntegrationTests
             response.StatusCode.Should().Be(HttpStatusCode.InternalServerError);
 
             // Cleanup
-            var newjobJson = new StringContent(JsonSerializer.Serialize(newJob), Encoding.UTF8, "application/json");
-            await DeleteJobInDatabase(newJob.JobId, newjobJson);
-            await DeleteJobInDatabase(sameJob.JobId, jobJson);
+            await DeleteJobInDatabase(newJob.JobId);
+            await DeleteJobInDatabase(sameJob.JobId);
 
         }
 
@@ -174,7 +171,7 @@ namespace ForwardBackend.IntegrationTests
             response.StatusCode.Should().Be(HttpStatusCode.NoContent);
 
             // Cleanup
-            await DeleteJobInDatabase(newJob.JobId, jobJson);
+            await DeleteJobInDatabase(newJob.JobId);
         }
 
         [Fact]
