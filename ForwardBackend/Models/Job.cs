@@ -16,6 +16,17 @@ namespace ForwardBackend.Models
         public DateTime EndDate { get; set; }
         public List<WorkExperience> WorkExperiences { get; }
 
+        public Job(int jobid, string companyName, DateTime startDate, DateTime endDate) {
+            JobId = jobid;
+            CompanyName = companyName;
+            StartDate = startDate;
+            EndDate = endDate;
+            WorkExperiences = new List<WorkExperience>();
+        }
+
+        public Job() {
+            WorkExperiences = new List<WorkExperience>();
+        }
         /*
          * Why is this here and not the Core model? - Well apperently the ValidateComplexTypeAttribute used in the blazor 
          * validation causes a "System.InvalidOperationException: ValidateComplexTypeAttribute can only used with ObjectGraphDataAnnotationsValidator." 

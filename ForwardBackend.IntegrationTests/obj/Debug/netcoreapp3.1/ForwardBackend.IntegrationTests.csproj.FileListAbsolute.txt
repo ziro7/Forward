@@ -275,8 +275,6 @@ C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\net
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.CookiePolicy.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cors.dll
-C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
@@ -350,8 +348,6 @@ C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\net
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.Abstractions.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Http.dll
-C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Core.dll
-C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.Abstractions.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Configuration.dll
@@ -516,3 +512,10 @@ C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\net
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\FluentAssertions.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\obj\Debug\netcoreapp3.1\ForwardBackend.IntegrationTests.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\obj\Debug\netcoreapp3.1\ForwardBackend.IntegrationTests.pdb
+C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll

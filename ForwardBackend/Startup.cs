@@ -29,7 +29,7 @@ namespace ForwardBackend
         public void ConfigureServices(IServiceCollection services) {
 
             // Registers that the DB Context uses a SQL Server and the connection string to the DB is the default defined in the appsettings.json file.
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
                 options.Audience = Configuration["AzureActiveDirectory:ResourceId"]; // This Api is the audience for the token.

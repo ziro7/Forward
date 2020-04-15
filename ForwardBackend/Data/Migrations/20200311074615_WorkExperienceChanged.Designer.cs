@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ForwardBackend.Data.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(DataContext))]
     [Migration("20200311074615_WorkExperienceChanged")]
     partial class WorkExperienceChanged
     {

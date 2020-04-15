@@ -8,7 +8,7 @@ namespace ForwardBackend.Models
 {
     public static class DBInitializer
     {
-        public static void Seed(AppDbContext context) {
+        public static void Seed(DataContext context) {
 
             if (context != null && !context.Jobs.Any()) {
 

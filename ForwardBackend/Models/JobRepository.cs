@@ -8,9 +8,9 @@ namespace ForwardBackend.Models
 {
     public class JobRepository : IJobRepository
     {
-        private readonly AppDbContext _appDbContext;
+        private readonly DataContext _appDbContext;
 
-        public JobRepository(AppDbContext appDbContext) {
+        public JobRepository(DataContext appDbContext) {
             _appDbContext = appDbContext;
         }
 

@@ -23,7 +23,7 @@ namespace ForwardBackend
             using (var scope = host.Services.CreateScope()) {
                 var services = scope.ServiceProvider;
                 try {
-                    var context = services.GetRequiredService<AppDbContext>();
+                    var context = services.GetRequiredService<DataContext>();
                     DBInitializer.Seed(context);
                     logger.LogInformation("Seeding database if empty");  
                 } catch (InvalidOperationException ex){

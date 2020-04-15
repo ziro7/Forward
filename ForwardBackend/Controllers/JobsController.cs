@@ -19,10 +19,10 @@ namespace ForwardBackend.Controllers
     [Authorize]
     public class JobsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly DataContext _context;
         private readonly ILogger<JobsController> _logger;
 
-        public JobsController(AppDbContext context, ILogger<JobsController> logger)
+        public JobsController(DataContext context, ILogger<JobsController> logger)
         {
             _context = context;
             _logger = logger;
@@ -156,7 +156,7 @@ namespace ForwardBackend.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Job>> DeleteJob(int id)
         {
-            _logger.LogInformation(LoggingEvents.DeleteItem, "PostJob from company {id}", id);
+            _logger.LogInformation(LoggingEvents.DeleteItem, "Delete Job from company {id}", id);
             var job = await _context.Jobs.FindAsync(id);
             if (job == null)
             {

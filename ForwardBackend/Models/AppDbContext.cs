@@ -6,12 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ForwardBackend.Models
 {
-    public class AppDbContext : DbContext
+    public class DataContext : DbContext
     {
         public DbSet<Job> Jobs { get; set; }
         public DbSet<WorkExperience> WorkExperiences { get; set; }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options) 
+        public DataContext(DbContextOptions<DataContext> options) 
             : base(options) {
         }
 
