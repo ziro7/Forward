@@ -27,6 +27,7 @@ Api - ASP.Net Core 3.0 backend:
 - CRUD operations is enabled. 
 - Swagger enabled to have a better overview of the API.
 - Authorization is enabled and accesstoken is required to access data. The Azure Active Directory is used to generate accesstokens, and the frontend is set as a party that can receive an accesstoken.
+- Added integration test of the jobController.
 
 Blazor frontend:
 - SignalR is included in blazor and is added in the configure method in startup.
@@ -45,17 +46,14 @@ CoreTest - Unit test library:
 - Unittests - TODO : Need to update
 
 ToDo: 
-- Remove the workexperience service and controller as they are not used.
-- Make the coding page pretty with a TODO page.
-- Maybe seed user database with an admin user and make add/remove/edit only valid for the user while view can be seen by all.
 - Add unit test for blazor frontend - incl. services.
-- Add unit test for API.
-- Add integration test. xUnit - Moq
+- Add unit test for API. (moq)
 - Add a resource table to get rid of CA1303
-- Try to remove warnings about the confugure await.
 - Add tips and tricks items 
 - microservices and container
 - Consider adding the coding page and add the api part with the calculations.
+- Make the coding page pretty with a TODO page.
+- Maybe seed user database with an admin user and make add/remove/edit only valid for the user while view can be seen by all.
 
 Out of scope:
 - Areas - Decided against using areas as it don't make much sense in my app at this point. It also mainly used in a project that have all of the MVC parts, where my frontend only have pages (views) and services (controllers) and backend only have controllers as the models are in the core solution. As I added ASP.Net Identity to enable login/logout functionality it was added in an area so technically it is included.
