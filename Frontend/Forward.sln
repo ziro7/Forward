@@ -10,13 +10,17 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "..\Core\Core.csproj", "{AE9ED3A0-2ADD-4CA4-B86B-2949EB792E65}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D9C73176-E3AA-4C33-9408-7375FC3350CD}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Tests", "..\Core.Tests\Core.Tests.csproj", "{DFBCDB44-855E-4E32-AA11-EA22C6C7665E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForwardBackend.IntegrationTests", "..\ForwardBackend.IntegrationTests\ForwardBackend.IntegrationTests.csproj", "{3B819B8E-4073-4678-9095-AC674BBF9D89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForwardBackend.IntegrationTests", "..\ForwardBackend.IntegrationTests\ForwardBackend.IntegrationTests.csproj", "{3B819B8E-4073-4678-9095-AC674BBF9D89}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Route", "..\Route\Route.csproj", "{28830C5D-1640-4E62-82BD-913F55BC28A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Route.Tests", "..\Route.Tests\Route.Tests.csproj", "{7EAD47A4-7ACB-4F42-9EDB-E6BACDC47213}"
+	ProjectSection(ProjectDependencies) = postProject
+		{28830C5D-1640-4E62-82BD-913F55BC28A5} = {28830C5D-1640-4E62-82BD-913F55BC28A5}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +48,14 @@ Global
 		{3B819B8E-4073-4678-9095-AC674BBF9D89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B819B8E-4073-4678-9095-AC674BBF9D89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B819B8E-4073-4678-9095-AC674BBF9D89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28830C5D-1640-4E62-82BD-913F55BC28A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28830C5D-1640-4E62-82BD-913F55BC28A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28830C5D-1640-4E62-82BD-913F55BC28A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28830C5D-1640-4E62-82BD-913F55BC28A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EAD47A4-7ACB-4F42-9EDB-E6BACDC47213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EAD47A4-7ACB-4F42-9EDB-E6BACDC47213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EAD47A4-7ACB-4F42-9EDB-E6BACDC47213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EAD47A4-7ACB-4F42-9EDB-E6BACDC47213}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
