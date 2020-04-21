@@ -1,10 +1,12 @@
 This is a solution for education purposes.
 
 It is developed in ASP.Net Core 3.0 and consist of the following projects:
-- Api ASP.NET Core web api.
+- ASP.NET Core web api with CV CRUD operations.
+- Integrations tests project for the CV CRUD operation project.
 - Blazor - Server side blazor frontend.
 - Core - Shared project with models
 - Core tests - Unit test for the core project.
+- ASP.NET Core web api with Graph Route endpoints.
 
 The solution is a page about me, where there is some pages about hobbies, a CV part and later a section on coding puzzles i might not add until later. The CV part is the main are of focus, as it talk to the backend.
 The data model is fairly simple and only consist of two classes - a "job" which have a list of 0 to many "experiences" or job funktions. This was done to add a bit to the complexity, as the CRUD operations was a small bit more complicated and the form validation on the front end was also a bit more involved. 
@@ -46,14 +48,14 @@ CoreTest - Unit test library:
 - Unittests - TODO : Need to update
 
 ToDo: 
-- Add unit test for blazor frontend - incl. services.
-- Add unit test for API. (moq)
+- Add unit test for blazor frontend - incl. services. (remove the core.tests project)
+- Add unit test for API (route one). (moq)
 - Add a resource table to get rid of CA1303
 - Add tips and tricks items 
-- microservices and container
-- Consider adding the coding page and add the api part with the calculations.
-- Make the coding page pretty with a TODO page.
+- Add detail page of the graph.
 - Maybe seed user database with an admin user and make add/remove/edit only valid for the user while view can be seen by all.
+- Consider adding a new code page.
 
 Out of scope:
 - Areas - Decided against using areas as it don't make much sense in my app at this point. It also mainly used in a project that have all of the MVC parts, where my frontend only have pages (views) and services (controllers) and backend only have controllers as the models are in the core solution. As I added ASP.Net Identity to enable login/logout functionality it was added in an area so technically it is included.
+- Microservices and container - I have used the idea of microservices and each API is fokused on 1 thing (except the ForwardBackend which also hold identity - but will be discussed in the report). I have not added docker support, which have not been a priority for me as, the project is not expected to launch on multiple platforms / enviroments and send to other people.
