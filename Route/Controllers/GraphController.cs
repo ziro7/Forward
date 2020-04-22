@@ -39,16 +39,16 @@ namespace Route.Controllers
             _graph.AddEdge(7, 2);
         }
 
-        // GET: api/Graph/startPoint/endpoint
-        [HttpGet("BFS/{startPoint}/{endpoint}")]
+        // GET: api/Graph/startPoint/endPoint
+        [HttpGet("BFS/{startPoint}/{endPoint}")]
         public List<int> GetShortestPathByBFS(int startPoint, int endPoint) {
             Tuple<List<int>, List<int>> result = _graph.BreathFirstSearch(startPoint, endPoint);
             _logger.LogInformation("Path by Breath First search");
             return result.Item2;
         }
 
-        // GET: api/Graph/startPoint/endpoint
-        [HttpGet("DFS/{startPoint}/{endpoint}")]
+        // GET: api/Graph/startPoint/endPoint
+        [HttpGet("DFS/{startPoint}/{endPoint}")]
         public List<int> GetShortestPathByDFS(int startPoint, int endPoint) {
             Tuple<List<int>, List<int>> result = _graph.DepthFirstSearch(startPoint, endPoint);
             _logger.LogInformation("Path by Depth First search");
