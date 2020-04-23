@@ -1,0 +1,53 @@
+﻿@page "/Graph"
+@inherits GraphBase
+@attribute [Authorize]
+
+<br />
+<h2 class="page-title">Graph</h2>
+
+<h3 class="pb-3 mb-4 font-italic border-bottom">
+    Testing out a graph structure.
+</h3>
+
+<p>
+    I set myself a test to create a graph data structure. In the end i would like to create a weighted graph, 
+    but to start out, I wanted to make a simpel graph, that use a simpel nummer as a node reference starting at 0.<br />
+    The edges don't have a value and only know the start and end node. <br />
+    A Graph can be made with an Edge List, a Adjacency Matrix or an Adjencecy List, which holds the information about the neightbours.
+    I selected the adjency list as it is generaly the recommended approach.<br />
+    <br />
+</p>
+<p>
+    I instanciated a fairy simple graph with 8 nodes in a seperate API project, and made a controller, which can be called
+    with either a deapth first search approch or a breath first search to return the path by which the target node was hit by the algorithme.<br />
+    Nedenfor kan ses et billede af graffen og i de nedenstående formularer kan man teste graffen ved at indtaste search algoritme og start og slutnode.
+
+    <img src="/images/Graph.jpg" alt="Graph">
+
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+            Default radio
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+            Second default radio
+        </label>
+    </div>
+
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Start Node</span>
+        </div>
+        <textarea class="form-control" aria-label="Start Node"></textarea>
+    </div>
+
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Target Node</span>
+        </div>
+        <textarea class="form-control" aria-label="Target Node"></textarea>
+    </div>
+</p>

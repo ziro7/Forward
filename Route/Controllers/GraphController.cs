@@ -13,30 +13,28 @@ namespace Route.Controllers
     public class GraphController : ControllerBase
     {
         private readonly ILogger<GraphController> _logger;
-        private Graph _graph;
+        private readonly Graph _graph;
 
         public GraphController(ILogger<GraphController> logger) {
             _logger = logger;
 
             _graph = new Graph(8);
             _graph.AddEdge(0, 1);
-            _graph.AddEdge(1, 0);
-            _graph.AddEdge(1, 4);
-            _graph.AddEdge(4, 1);
-            _graph.AddEdge(4, 6);
-            _graph.AddEdge(6, 4);
-            _graph.AddEdge(6, 0);
-            _graph.AddEdge(0, 6);
+            _graph.AddEdge(1, 2);
+            _graph.AddEdge(2, 3);
+            _graph.AddEdge(3, 2);
+            _graph.AddEdge(2, 4);
+            _graph.AddEdge(4, 2);
+            _graph.AddEdge(3, 7);
+            _graph.AddEdge(7, 4);
             _graph.AddEdge(1, 5);
             _graph.AddEdge(5, 1);
-            _graph.AddEdge(5, 3);
-            _graph.AddEdge(3, 5);
-            _graph.AddEdge(3, 0);
-            _graph.AddEdge(0, 3);
-            _graph.AddEdge(5, 2);
-            _graph.AddEdge(2, 5);
-            _graph.AddEdge(2, 7);
-            _graph.AddEdge(7, 2);
+            _graph.AddEdge(5, 0);
+            _graph.AddEdge(0, 5);
+            _graph.AddEdge(5, 6);
+            _graph.AddEdge(6, 5);
+            _graph.AddEdge(5, 7);
+
         }
 
         // GET: api/Graph/startPoint/endPoint

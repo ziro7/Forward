@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForwardBackend.IntegrationT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Route", "..\Route\Route.csproj", "{28830C5D-1640-4E62-82BD-913F55BC28A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Route.Tests", "..\Route.Tests\Route.Tests.csproj", "{7EAD47A4-7ACB-4F42-9EDB-E6BACDC47213}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Route.Tests", "..\Route.Tests\Route.Tests.csproj", "{7EAD47A4-7ACB-4F42-9EDB-E6BACDC47213}"
 	ProjectSection(ProjectDependencies) = postProject
 		{28830C5D-1640-4E62-82BD-913F55BC28A5} = {28830C5D-1640-4E62-82BD-913F55BC28A5}
 	EndProjectSection

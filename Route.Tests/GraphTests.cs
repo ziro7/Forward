@@ -73,5 +73,37 @@ namespace Route.Tests
             Assert.Equal(new List<int> { 0, 3, 5 }, result.Item2);
 
         }
+
+        [Fact]
+        public void DepthFirstSearch_InvalidInput_ReturnException() {
+
+            // Arrange
+            var graph = new Graph(8);
+            graph.AddEdge(0, 1);
+            graph.AddEdge(1, 0);
+            graph.AddEdge(1, 4);
+            graph.AddEdge(4, 1);
+            graph.AddEdge(4, 6);
+            graph.AddEdge(6, 4);
+            graph.AddEdge(6, 0);
+            graph.AddEdge(0, 6);
+            graph.AddEdge(1, 5);
+            graph.AddEdge(5, 1);
+            graph.AddEdge(5, 3);
+            graph.AddEdge(3, 5);
+            graph.AddEdge(3, 0);
+            graph.AddEdge(0, 3);
+            graph.AddEdge(5, 2);
+            graph.AddEdge(2, 5);
+            graph.AddEdge(2, 7);
+            graph.AddEdge(7, 2);
+
+            // Act
+            Exception ex = Assert.Throws<KeyNotFoundException>(() => graph.DepthFirstSearch(0, 11));
+
+            // Assert
+            Assert.Equal("The targetNode is not a member of the nodes in the graph.", ex.Message);
+
+        }
     }
 }

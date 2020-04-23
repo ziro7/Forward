@@ -7,8 +7,8 @@ namespace Route.Models
 {
     public class Graph
     {
-        private int _v; // Number of vertices. Which is the nodes in the graph
-        private LinkedList<int>[] _adjacencyList; // An array of doubly linked lists of integers, which represents the nabors of each node.
+        private readonly int _v; // Number of vertices. Which is the nodes in the graph
+        private readonly LinkedList<int>[] _adjacencyList; // An array of doubly linked lists of integers, which represents the nabors of each node.
 
         public Graph(int numberOfVertices) {
             _v = numberOfVertices;
@@ -24,9 +24,7 @@ namespace Route.Models
         }
 
         public Tuple<List<int>, List<int>> BreathFirstSearch(int startNode, int targetNode) {
-
-            // Validate that targetNode is in the graph - sme with startnode
-            //TODO
+            ValidateInput(startNode, targetNode);
 
             // Creates a dictionary of which node was visited from which to enable shortes path
             var previous = new Dictionary<int, int>();
@@ -78,8 +76,17 @@ namespace Route.Models
             return result;
         }
 
-        public Tuple<List<int>, List<int>> DepthFirstSearch(int startNode, int targetNode) {
+        private void ValidateInput(int startNode, int targetNode) {
+            if (startNode < 0 || startNode > _v) {
+                throw new KeyNotFoundException("The startNode is not a member of the nodes in the graph.");
+            }
+            if (targetNode < 0 || targetNode > _v) {
+                throw new KeyNotFoundException("The targetNode is not a member of the nodes in the graph.");
+            }
+        }
 
+        public Tuple<List<int>, List<int>> DepthFirstSearch(int startNode, int targetNode) {
+            ValidateInput(startNode, targetNode);
             var previous = new Dictionary<int, int>();
             var searchedOrder = new List<int>();
             var path = new List<int>();
