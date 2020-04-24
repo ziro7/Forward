@@ -49,12 +49,10 @@ CoreTest - Unit test library:
 
 ToDo: 
 - Add unit test for blazor frontend - incl. services. (remove the core.tests project)
-- Add unit test for API (route one). (moq)
+- Add integration test for API (route one). 
 - Add a resource table to get rid of CA1303
 - Add tips and tricks items 
-- Add detail page of the graph.
 - Maybe seed user database with an admin user and make add/remove/edit only valid for the user while view can be seen by all.
-- Consider adding a new code page.
 
 Out of scope:
 - Areas - Decided against using areas as it don't make much sense in my app at this point. It also mainly used in a project that have all of the MVC parts, where my frontend only have pages (views) and services (controllers) and backend only have controllers as the models are in the core solution. As I added ASP.Net Identity to enable login/logout functionality it was added in an area so technically it is included.
