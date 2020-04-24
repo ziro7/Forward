@@ -23,8 +23,8 @@ namespace Forward.Services
         };
 
         public JobService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor) {
-            _httpClient = httpClient ?? throw new System.ArgumentNullException(nameof(httpClient));
-            _httpContextAccessor = httpContextAccessor ?? throw new System.ArgumentNullException(nameof(httpContextAccessor));
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
         }
 
         public async Task<Job> AddJob(Job job) {

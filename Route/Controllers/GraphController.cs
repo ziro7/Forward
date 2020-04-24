@@ -27,6 +27,7 @@ namespace Route.Controllers
             _graph.AddEdge(4, 2);
             _graph.AddEdge(3, 7);
             _graph.AddEdge(7, 4);
+            _graph.AddEdge(7, 5);
             _graph.AddEdge(1, 5);
             _graph.AddEdge(5, 1);
             _graph.AddEdge(5, 0);

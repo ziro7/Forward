@@ -10,7 +10,7 @@
 </h3>
 
 <p>
-    I set myself a test to create a graph data structure. In the end i would like to create a weighted graph, 
+    I set myself a test to create a graph data structure. In the end i would like to create a weighted graph,
     but to start out, I wanted to make a simpel graph, that use a simpel nummer as a node reference starting at 0.<br />
     The edges don't have a value and only know the start and end node. <br />
     A Graph can be made with an Edge List, a Adjacency Matrix or an Adjencecy List, which holds the information about the neightbours.
@@ -24,30 +24,49 @@
 
     <img src="/images/Graph.jpg" alt="Graph">
 
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-        <label class="form-check-label" for="exampleRadios1">
-            Default radio
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-        <label class="form-check-label" for="exampleRadios2">
-            Second default radio
-        </label>
-    </div>
-
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Start Node</span>
-        </div>
-        <textarea class="form-control" aria-label="Start Node"></textarea>
-    </div>
-
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Target Node</span>
-        </div>
-        <textarea class="form-control" aria-label="Target Node"></textarea>
-    </div>
+    Depth first search will be used unless the checkbox is unchecked. If unchecked Breath first search will be used.<br />
 </p>
+
+
+@if (GraphInput != null) {
+    <section>
+
+        <EditForm Model="@GraphInput" OnValidSubmit="@HandleValidSubmit">
+            <ObjectGraphDataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div>
+                <InputCheckbox @bind-Value="GraphInput.IsDFS" />
+                <label>
+                    Use Depth first search?
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Start Node:</label>
+                <InputNumber @bind-Value="@GraphInput.StartNode" class="form-control" />
+                <ValidationMessage For="@(() => GraphInput.StartNode)" />
+            </div>
+            <div class="form-group">
+                <label>Target Node:</label>
+                <InputNumber @bind-Value="@GraphInput.TargetNode" class="form-control" />
+                <ValidationMessage For="@(() => GraphInput.TargetNode)" />
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Få ruten.</button>
+        </EditForm>
+
+    </section>
+}
+@if (@PathIsFound) {
+    <section>
+        The following path was found:
+        <ul class="list-group">
+            @foreach (var node in Path) {
+                <li class="list-group-item">@node.ToString()</li>
+            }
+        </ul>
+    </section>
+}
+

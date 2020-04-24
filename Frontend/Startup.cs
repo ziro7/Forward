@@ -36,6 +36,12 @@ namespace Forward
                 //client.BaseAddress = new Uri("https://localhost:44378/");
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json", 1.0));
             });
+
+            // Use the IHttpClient factory to register JobService and to use the uri when called.
+            services.AddHttpClient<IGraphService, GraphService>(client => {
+                client.BaseAddress = new Uri("https://localhost:44344/");
+            });
+
             services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; }); //Added the option for detailed info delivered to the browser.
             
             // This one is needed to acces the cookie information from other pages where the service is injected.
