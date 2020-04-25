@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Threading.Tasks;
 using ForwardBackend.Models;
 using Microsoft.AspNetCore.Hosting;
@@ -19,15 +22,17 @@ namespace ForwardBackend
 
             var host = CreateHostBuilder(args).Build();
             var logger = host.Services.GetRequiredService<ILogger<Program>>();
+            ResourceManager stringManager = new ResourceManager("da-DK", Assembly.GetExecutingAssembly());
+            ;
 
             using (var scope = host.Services.CreateScope()) {
                 var services = scope.ServiceProvider;
                 try {
                     var context = services.GetRequiredService<DataContext>();
                     DBInitializer.Seed(context);
-                    logger.LogInformation("Seeding database if empty");  
+                    logger.LogInformation(stringManager.GetString("Seeding database if empty", CultureInfo.CurrentUICulture));  
                 } catch (InvalidOperationException ex){
-                    logger.LogWarning(LoggingEvents.SystemEvent, ex, "An error occurred getting the context.");
+                    logger.LogWarning(LoggingEvents.SystemEvent, ex, stringManager.GetString("An error occurred getting the context.", CultureInfo.CurrentUICulture));
                 }
             }
 

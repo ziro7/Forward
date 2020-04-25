@@ -15,6 +15,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Resources;
+using System.Globalization;
+using System.Reflection;
 
 namespace ForwardBackend
 {
@@ -56,13 +59,14 @@ namespace ForwardBackend
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger) {
 
+            ResourceManager stringManager = new ResourceManager("da-DK", Assembly.GetExecutingAssembly());
             // Middleware component
             /*The request handling pipeline is composed as a series of middleware components. 
              * Each component performs asynchronous operations on an HttpContext and then either
              * invokes the next middleware in the pipeline or terminates the request.*/
 
             if (env.IsDevelopment()) {
-                logger.LogInformation("In Development environment");
+                logger.LogInformation(stringManager.GetString("In Development environment", CultureInfo.CurrentUICulture));
                 app.UseDeveloperExceptionPage(); // gets more information on crash - should not be in release tho
             } else {
                 app.UseExceptionHandler("/Error");
