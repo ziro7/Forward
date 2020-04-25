@@ -6,6 +6,7 @@ It is developed in ASP.Net Core 3.0 and consist of the following projects:
 - Blazor - Server side blazor frontend.
 - Core - Shared project with models
 - ASP.NET Core web api with Graph Route endpoints.
+- Integrations tests project for the Graph Route project.
 
 The solution is a page about me, where there is some pages about hobbies, a CV part and later a section on coding puzzles i might not add until later. The CV part is the main are of focus, as it talk to the backend.
 The data model is fairly simple and only consist of two classes - a "job" which have a list of 0 to many "experiences" or job funktions. This was done to add a bit to the complexity, as the CRUD operations was a small bit more complicated and the form validation on the front end was also a bit more involved. 
@@ -20,7 +21,7 @@ To run the solution
 Features include:
 - CI/CD pipeline to azure - It is not published so currently it only build continueously.
 
-Api - ASP.Net Core 3.0 backend:
+Api - ASP.Net Core 3.0 backend - CV CRUD:
 - Entity Framework Core - include a one to many relationship.
 - EF Migrations is added in the data folder. 
 - Seed funtion will populate database if none is allready there.
@@ -43,8 +44,13 @@ Core - Class library:
 - Custom data validation - Added a custom validation so the beginning job date can't be before I was born - Se StartDateValidator. This validation still uses Blazors validation engine.
 - Model logic validation - Added a custom ValidationResult where the data on the job and the experience on that job is being valuated.
 
+Api - ASP.Net Core 3.0 Graph Route:
+- Graph datastructure with a Breath or Depth first search aswell as the actually path taken.
+- Logging - In program.cs, startup and controller. 
+- Swagger enabled to have a better overview of the API.
+- Added integration test of the GraphController.
+
 ToDo: 
-- Add integration test for API (route one). 
 - Add tips and tricks items 
 - Maybe seed user database with an admin user and make add/remove/edit only valid for the user while view can be seen by all.
 
