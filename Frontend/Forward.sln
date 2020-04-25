@@ -20,6 +20,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Route.Tests", "..\Route.Tes
 		{28830C5D-1640-4E62-82BD-913F55BC28A5} = {28830C5D-1640-4E62-82BD-913F55BC28A5}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Route.IntegrationTests", "..\Rounte.IntegrationTests\Route.IntegrationTests.csproj", "{F613AED0-C29F-44D6-BDB3-5C8DE252C90F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{7EAD47A4-7ACB-4F42-9EDB-E6BACDC47213}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EAD47A4-7ACB-4F42-9EDB-E6BACDC47213}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EAD47A4-7ACB-4F42-9EDB-E6BACDC47213}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F613AED0-C29F-44D6-BDB3-5C8DE252C90F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F613AED0-C29F-44D6-BDB3-5C8DE252C90F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F613AED0-C29F-44D6-BDB3-5C8DE252C90F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F613AED0-C29F-44D6-BDB3-5C8DE252C90F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

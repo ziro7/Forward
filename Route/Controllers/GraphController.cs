@@ -53,7 +53,5 @@ namespace Route.Controllers
             _logger.LogInformation("Path by Depth First search");
             return result.Item2;
         }
-
-        // Koble evt. swager på her - da det vil give mere mening hvis jeg ikke beskytter denne.
     }
 }
