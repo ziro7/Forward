@@ -1,11 +1,26 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Xunit;
 
 namespace Core.Tests
 {
     public class JobTests
     {
+        private IList<ValidationResult> ValidateModel(object model) {
+            var validationResults = new List<ValidationResult>();
+            var validationContext = new ValidationContext(model, null, null);
+            Validator.TryValidateObject(model, validationContext, validationResults, true);
+            return validationResults;
+        }
+
+        [Fact]
+        public void CompanyNameRequired_CompanyNameIsSupplied_Valid() {
+            var job = new Job() { CompanyName = "TestCompany" };
+            Assert.True(ValidateModel(job).Contains(new ValidationResult("Company name is too long")));
+        }
+
+
         [Fact]
         public void IsValid_ValidInout_ReturnTrue() {
             // Arrange

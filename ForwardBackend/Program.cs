@@ -16,14 +16,13 @@ namespace ForwardBackend
 {
     public class Program
     {
+        string _ca1052 = "ca1052 conflict with my logger implementation";
         public static void Main(string[] args) {
             //CreateHostBuilder(args).Build().Run();
             // Above is replaced with below code to seed the datebase after build but before run.
-
             var host = CreateHostBuilder(args).Build();
             var logger = host.Services.GetRequiredService<ILogger<Program>>();
             ResourceManager stringManager = new ResourceManager("da-DK", Assembly.GetExecutingAssembly());
-            ;
 
             using (var scope = host.Services.CreateScope()) {
                 var services = scope.ServiceProvider;
