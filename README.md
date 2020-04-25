@@ -48,7 +48,7 @@ CoreTest - Unit test library:
 - Unittests - TODO : Need to update
 
 ToDo: 
-- Add unit test for blazor frontend - incl. services. (remove the core.tests project)
+- remove the core.tests project.
 - Add integration test for API (route one). 
 - Add a resource table to get rid of CA1303
 - Add tips and tricks items 
@@ -57,3 +57,4 @@ ToDo:
 Out of scope:
 - Areas - Decided against using areas as it don't make much sense in my app at this point. It also mainly used in a project that have all of the MVC parts, where my frontend only have pages (views) and services (controllers) and backend only have controllers as the models are in the core solution. As I added ASP.Net Identity to enable login/logout functionality it was added in an area so technically it is included.
 - Microservices and container - I have used the idea of microservices and each API is fokused on 1 thing (except the ForwardBackend which also hold identity - but will be discussed in the report). I have not added docker support, which have not been a priority for me as, the project is not expected to launch on multiple platforms / enviroments and send to other people.
+- Unit test of blazor pages/components. It is a backend course, so wanted to fokus on backend functionality.
