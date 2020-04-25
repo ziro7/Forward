@@ -5,7 +5,6 @@ It is developed in ASP.Net Core 3.0 and consist of the following projects:
 - Integrations tests project for the CV CRUD operation project.
 - Blazor - Server side blazor frontend.
 - Core - Shared project with models
-- Core tests - Unit test for the core project.
 - ASP.NET Core web api with Graph Route endpoints.
 
 The solution is a page about me, where there is some pages about hobbies, a CV part and later a section on coding puzzles i might not add until later. The CV part is the main are of focus, as it talk to the backend.
@@ -44,13 +43,8 @@ Core - Class library:
 - Custom data validation - Added a custom validation so the beginning job date can't be before I was born - Se StartDateValidator. This validation still uses Blazors validation engine.
 - Model logic validation - Added a custom ValidationResult where the data on the job and the experience on that job is being valuated.
 
-CoreTest - Unit test library:
-- Unittests - TODO : Need to update
-
 ToDo: 
-- remove the core.tests project.
 - Add integration test for API (route one). 
-- Add a resource table to get rid of CA1303
 - Add tips and tricks items 
 - Maybe seed user database with an admin user and make add/remove/edit only valid for the user while view can be seen by all.
 
