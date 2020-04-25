@@ -51,8 +51,11 @@ Api - ASP.Net Core 3.0 Graph Route:
 - Added integration test of the GraphController.
 
 ToDo: 
-- Add tips and tricks items 
+- Change Graph database seed instead of the current. (make static file and call from configure like admin user)
+- Add resource file so the resourcemanage works
 - Maybe seed user database with an admin user and make add/remove/edit only valid for the user while view can be seen by all.
+- Add tips and tricks items 
+
 
 Out of scope:
 - Areas - Decided against using areas as it don't make much sense in my app at this point. It also mainly used in a project that have all of the MVC parts, where my frontend only have pages (views) and services (controllers) and backend only have controllers as the models are in the core solution. As I added ASP.Net Identity to enable login/logout functionality it was added in an area so technically it is included.
