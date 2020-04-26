@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Resources;
 using System.Globalization;
 using System.Reflection;
+using Microsoft.AspNetCore.Localization;
 
 namespace ForwardBackend
 {
@@ -59,19 +60,36 @@ namespace ForwardBackend
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger) {
 
-            ResourceManager stringManager = new ResourceManager("da-DK", Assembly.GetExecutingAssembly());
+            ResourceManager stringManager = new ResourceManager("ForwardBackend.Resources.Logging", Assembly.GetExecutingAssembly());
             // Middleware component
             /*The request handling pipeline is composed as a series of middleware components. 
              * Each component performs asynchronous operations on an HttpContext and then either
              * invokes the next middleware in the pipeline or terminates the request.*/
 
             if (env.IsDevelopment()) {
-                logger.LogInformation(stringManager.GetString("In Development environment", CultureInfo.CurrentUICulture));
+                logger.LogInformation(stringManager.GetString("DevEnviroment", CultureInfo.CurrentUICulture));
                 app.UseDeveloperExceptionPage(); // gets more information on crash - should not be in release tho
             } else {
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+
+            app.UseStatusCodePages(); // adds the status code 200 etc.
+
+            var supportedCultures = new[] {
+                new CultureInfo("en"),
+                new CultureInfo("da-DK")
+            };
+
+            var requestLocalizationOptions = new RequestLocalizationOptions {
+                DefaultRequestCulture = new RequestCulture("da-DK"),
+                // Format of numbers, dates etc.
+                SupportedCultures = supportedCultures,
+                // UI strings 
+                SupportedUICultures = supportedCultures
+            };
+
+            app.UseRequestLocalization(requestLocalizationOptions);
 
             // Enable middleware to serve generated Swagger as a JSON endpoint
             app.UseSwagger();
@@ -93,8 +111,6 @@ namespace ForwardBackend
             app.UseAuthentication(); 
             app.UseAuthorization(); 
             //app.UseSession(); //TODO look into it later
-
-            app.UseStatusCodePages(); // adds the status code 200 etc.
 
             // Odata is not yet supported for 3.0.0
             //app.UseMvc(routebuilder => 

@@ -21,16 +21,16 @@ namespace ForwardBackend
             // Above is replaced with below code to seed the datebase after build but before run.
             var host = CreateHostBuilder(args).Build();
             var logger = host.Services.GetRequiredService<ILogger<Program>>();
-            ResourceManager stringManager = new ResourceManager("da-DK", Assembly.GetExecutingAssembly());
+            ResourceManager stringManager = new ResourceManager("ForwardBackend.Resources.Logging", Assembly.GetExecutingAssembly());
 
             using (var scope = host.Services.CreateScope()) {
                 var services = scope.ServiceProvider;
                 try {
                     var context = services.GetRequiredService<DataContext>();
                     DBInitializer.Seed(context);
-                    logger.LogInformation(stringManager.GetString("Seeding database if empty", CultureInfo.CurrentUICulture));  
+                    logger.LogInformation(stringManager.GetString("SeedDatabase", CultureInfo.CurrentUICulture));  
                 } catch (InvalidOperationException ex){
-                    logger.LogWarning(LoggingEvents.SystemEvent, ex, stringManager.GetString("An error occurred getting the context.", CultureInfo.CurrentUICulture));
+                    logger.LogWarning(LoggingEvents.SystemEvent, ex, stringManager.GetString("ErrorInContext", CultureInfo.CurrentUICulture));
                 }
             }
 

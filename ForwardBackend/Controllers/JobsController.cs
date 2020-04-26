@@ -27,7 +27,7 @@ namespace ForwardBackend.Controllers
         {
             _context = context;
             _logger = logger;
-            _stringManager = new ResourceManager("da-DK", Assembly.GetExecutingAssembly());
+            _stringManager = new ResourceManager("ForwardBackend.Resources.Controllers.JobsController", Assembly.GetExecutingAssembly());
         }
 
         // GET: api/Jobs
@@ -35,16 +35,14 @@ namespace ForwardBackend.Controllers
         //[EnableQuery()]
         public async Task<ActionResult<IEnumerable<Job>>> GetJobs()
         {
-            _logger.LogInformation(LoggingEvents.ListItems, _stringManager.GetString(
-                "GetJobs Called", CultureInfo.CurrentUICulture));
+            _logger.LogInformation(LoggingEvents.ListItems, _stringManager.GetString("GetJobsCalled", CultureInfo.CurrentUICulture));
             var jobs = await _context.Jobs
                 .Include(j => j.WorkExperiences)
                 .ToListAsync()
                 .ConfigureAwait(true);
 
             if (jobs == null) {
-                _logger.LogInformation(LoggingEvents.GetItemNotFound, _stringManager.GetString(
-                "GetJobs Called but failed and returned NotFound", CultureInfo.CurrentUICulture));
+                _logger.LogInformation(LoggingEvents.GetItemNotFound, _stringManager.GetString("GetJobsNotFound", CultureInfo.CurrentUICulture));
                 return NotFound();
             }
 
@@ -55,8 +53,7 @@ namespace ForwardBackend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Job>> GetJob(int id)
         {
-            _logger.LogInformation(LoggingEvents.GetItem, _stringManager.GetString(
-                "Getting job {Id}", CultureInfo.CurrentUICulture),id);
+            _logger.LogInformation(LoggingEvents.GetItem, _stringManager.GetString("GetJob", CultureInfo.CurrentUICulture),id);
             var job = await _context.Jobs
                 .Include(j => j.WorkExperiences)
                 .AsNoTracking()
@@ -65,8 +62,7 @@ namespace ForwardBackend.Controllers
 
             if (job == null)
             {
-                _logger.LogWarning(LoggingEvents.GetItemNotFound, _stringManager.GetString(
-                "GetJob({Id}) NOT FOUND", CultureInfo.CurrentUICulture), id);
+                _logger.LogWarning(LoggingEvents.GetItemNotFound, _stringManager.GetString("GetJobNotFound", CultureInfo.CurrentUICulture), id);
                 return NotFound();
             }
 
@@ -80,7 +76,7 @@ namespace ForwardBackend.Controllers
         public async Task<IActionResult> PutJob(int id, Job job)
         {
             _logger.LogInformation(LoggingEvents.InsertItem, _stringManager.GetString(
-                "Putjob {Id}", CultureInfo.CurrentUICulture), id);
+                "Putjob", CultureInfo.CurrentUICulture), id);
             if (job == null)
             {
                 throw new ArgumentNullException("The job with id: " + id + " is null");
@@ -152,8 +148,7 @@ namespace ForwardBackend.Controllers
                 throw new ArgumentNullException(nameof(job));
             }
 
-            _logger.LogInformation(LoggingEvents.UpdateItem, _stringManager.GetString(
-                "PostJob from company {0}", CultureInfo.CurrentUICulture), job.CompanyName);
+            _logger.LogInformation(LoggingEvents.UpdateItem, _stringManager.GetString("PostJob", CultureInfo.CurrentUICulture), job.CompanyName);
             _context.Jobs.Add(job);
             await _context.SaveChangesAsync().ConfigureAwait(false);
 
