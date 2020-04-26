@@ -25,7 +25,7 @@ Api - ASP.Net Core 3.0 backend - CV CRUD:
 - Entity Framework Core - include a one to many relationship.
 - EF Migrations is added in the data folder. 
 - Seed funtion will populate database if none is allready there.
-- Logging - In program.cs, startup and controller. 
+- Logging - In program.cs, startup and controller. Added a resourcemanager so the message can be based on the culture ("da-DK" and general "en" supported.)
 - CRUD operations is enabled. 
 - Swagger enabled to have a better overview of the API.
 - Authorization is enabled and accesstoken is required to access data. The Azure Active Directory is used to generate accesstokens, and the frontend is set as a party that can receive an accesstoken.
