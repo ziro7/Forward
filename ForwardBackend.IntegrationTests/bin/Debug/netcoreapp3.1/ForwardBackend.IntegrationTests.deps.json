@@ -3479,6 +3479,14 @@
         "runtime": {
           "ForwardBackend.dll": {}
         },
+        "resources": {
+          "da-DK/ForwardBackend.resources.dll": {
+            "locale": "da-DK"
+          },
+          "en/ForwardBackend.resources.dll": {
+            "locale": "en"
+          }
+        },
         "compile": {
           "ForwardBackend.dll": {}
         }

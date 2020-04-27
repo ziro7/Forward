@@ -513,6 +513,8 @@ C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\net
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\ForwardBackend.pdb
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\Forward.pdb
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\Core.pdb
+C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\da-DK\ForwardBackend.resources.dll
+C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\bin\Debug\netcoreapp3.1\en\ForwardBackend.resources.dll
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\obj\Debug\netcoreapp3.1\ForwardBackend.IntegrationTests.csprojAssemblyReference.cache
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\obj\Debug\netcoreapp3.1\ForwardBackend.IntegrationTests.AssemblyInfoInputs.cache
 C:\Users\JBKD\source\repos\Forward\ForwardBackend.IntegrationTests\obj\Debug\netcoreapp3.1\ForwardBackend.IntegrationTests.AssemblyInfo.cs
