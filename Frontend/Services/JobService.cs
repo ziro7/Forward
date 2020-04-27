@@ -16,15 +16,13 @@ namespace Forward.Services
     public class JobService : IJobService
     {
         private readonly HttpClient _httpClient;
-        private readonly IHttpContextAccessor _httpContextAccessor; // TODO to access data from cookie like name
         private AuthenticationResult _authResult;
         private readonly JsonSerializerOptions _options = new JsonSerializerOptions {
             PropertyNameCaseInsensitive = true
         };
 
-        public JobService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor) {
+        public JobService(HttpClient httpClient) {
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-            _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
         }
 
         public async Task<Job> AddJob(Job job) {

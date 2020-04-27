@@ -48,7 +48,9 @@
                         <td width="10%">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a href="@($"CVDetail/{Jobs[i].JobId}")" class="btn btn-primary btn-sm">View</a>
-                                <a href="@($"EditCV/{Jobs[i].JobId}")" class="btn btn-primary btn-sm">Modify/Delete</a>
+                                @if (@CurrentUser.Identity.Name == "admin@mail.com") {
+                                    <a href="@($"EditCV/{Jobs[i].JobId}")" class="btn btn-primary btn-sm">Modify/Delete</a>
+                                }
                             </div>
 
                         </td>
@@ -68,7 +70,9 @@
                         <td width="10%">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a href="@($"CVDetail/{Jobs[i].JobId}")" class="btn btn-primary btn-sm">View</a>
-                                <a href="@($"EditCV/{Jobs[i].JobId}")" class="btn btn-primary btn-sm">Modify/Delete</a>
+                                @if (@CurrentUser.Identity.Name == "admin@mail.com") {
+                                    <a href="@($"EditCV/{Jobs[i].JobId}")" class="btn btn-primary btn-sm">Modify/Delete</a>
+                                }
                             </div>
                         </td>
                     </tr>
@@ -78,17 +82,19 @@
     </table>
 }
 <br />
-<button @onclick="@AddNewJob" class="btn btn-dark">Add new Job</button>
-<AddJobDialog @ref="AddJobDialog" CloseEventCallback="@AddJobDialog_OnDialogClose"></AddJobDialog>
-<br />
-<br />
-<h2>Uddannelse</h2>
-<p>
-    <ul>
-        <li>2019	AU i IT, Smartlearning.dk (cphbusiness)</li>
-        <li>2007	Cand.Merc.Fin (Hovedopgave mangler), Handelshøjskolen i Århus</li>
-        <li>2004	HA in Economics and business administration, Handelshøjskolen i Århus</li>
-        <li>2001	HHX, Handelsskolen i Randers.</li>
-    </ul>
-</p>
+@if (@CurrentUser.Identity.Name == "admin@mail.com") {
+    <button @onclick="@AddNewJob" class="btn btn-dark">Add new Job</button>
+    }
+    <AddJobDialog @ref="AddJobDialog" CloseEventCallback="@AddJobDialog_OnDialogClose"></AddJobDialog>
+    <br />
+    <br />
+    <h2>Uddannelse</h2>
+    <p>
+        <ul>
+            <li>2019	AU i IT, Smartlearning.dk (cphbusiness)</li>
+            <li>2007	Cand.Merc.Fin (Hovedopgave mangler), Handelshøjskolen i Århus</li>
+            <li>2004	HA in Economics and business administration, Handelshøjskolen i Århus</li>
+            <li>2001	HHX, Handelsskolen i Randers.</li>
+        </ul>
+    </p>
 
