@@ -54,7 +54,7 @@ namespace Forward
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager) {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             } else {
@@ -69,8 +69,6 @@ namespace Forward
 
             app.UseAuthentication();
             app.UseAuthorization();
-
-            MyIdentityDataInitializer.SeedUsers(userManager);
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapBlazorHub(); //SignalR hub

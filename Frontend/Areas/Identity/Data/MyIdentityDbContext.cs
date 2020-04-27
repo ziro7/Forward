@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Forward.Data
 {
-    public class ForwardContext : IdentityDbContext<IdentityUser>
+    public class MyIdentityDbContext : IdentityDbContext<IdentityUser, IdentityRole, string>
     {
-        public ForwardContext(DbContextOptions<ForwardContext> options)
+        public MyIdentityDbContext(DbContextOptions<MyIdentityDbContext> options)
             : base(options)
         {
         }

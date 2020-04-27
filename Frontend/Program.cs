@@ -11,13 +11,29 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Client;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Identity;
+using Forward.Areas.Identity.Data;
+using Microsoft.Extensions.DependencyInjection;
+using Forward.Data;
 
 namespace Forward
 {
     public class Program
     {
         public static void Main(string[] args) {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+
+            using (var scope = host.Services.CreateScope()) {
+                var serviceProvider = scope.ServiceProvider;
+                try {
+                    var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+                    MyIdentityDataInitializer.SeedUsers(userManager);
+                } catch (Exception ex) {
+                    Console.WriteLine(ex.StackTrace);
+                }
+            }
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

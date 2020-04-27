@@ -15,12 +15,12 @@ namespace Forward.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<ForwardContext>(options =>
+                services.AddDbContext<MyIdentityDbContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("ForwardContextConnection")));
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<ForwardContext>();
+                    .AddEntityFrameworkStores<MyIdentityDbContext>();
             });
         }
     }

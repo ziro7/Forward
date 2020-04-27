@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Forward.Migrations
 {
-    [DbContext(typeof(ForwardContext))]
+    [DbContext(typeof(MyIdentityDbContext))]
     partial class ForwardContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
