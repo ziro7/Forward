@@ -17,6 +17,7 @@ To run the solution
 2.1 also type "dotnet ef migrations add CreateIdentitySchema" (Identity database)
 3. In the same console run "dotnet ef database update"
 (still need to test if this works or something else is needed.)
+4. When logging in, there are two users in the database: normal@mail.com and admin@mail.com - both have password "PZg38F#@7oOVvrH". You can also create your own. The admin user can however do more then the average user.
 
 Features include:
 - CI/CD pipeline to azure - It is not published so currently it only build continueously.
@@ -37,6 +38,7 @@ Blazor frontend:
 - Complex form validation - Extending the built in functionality to enable validation of the nested class structure in EditCV page, as it handles both job and experiences.
 - Bootstrap - Too make the page better looking I have added some bootstrap code, aswell as some css, and load some icons etc.
 - Login funktionality - Using ASP.Net Identity cookie funktionality to add a cookie when logging in. When logging out the cookie is removed. The user will only see authorized content.
+- The users db has been seeded with 2 users - a normal and an admin user. Only the admin user can add job, and modify/delete jobs. The normal user can only view details.
 - Blocking pages from unathorized users (when setting the url to the subpages.)
 - JobService that call the API now include a bearer token in the header of the request.
 
@@ -49,13 +51,6 @@ Api - ASP.Net Core 3.0 Graph Route:
 - Logging - In program.cs, startup and controller. 
 - Swagger enabled to have a better overview of the API.
 - Added integration test of the GraphController.
-
-ToDo: 
-- Change Graph database seed instead of the current. (make static file and call from configure like admin user)
-- Add resource file so the resourcemanage works
-- Maybe seed user database with an admin user and make add/remove/edit only valid for the user while view can be seen by all.
-- Add tips and tricks items 
-
 
 Out of scope:
 - Areas - Decided against using areas as it don't make much sense in my app at this point. It also mainly used in a project that have all of the MVC parts, where my frontend only have pages (views) and services (controllers) and backend only have controllers as the models are in the core solution. As I added ASP.Net Identity to enable login/logout functionality it was added in an area so technically it is included.
